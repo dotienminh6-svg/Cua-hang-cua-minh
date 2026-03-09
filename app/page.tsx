@@ -21,11 +21,11 @@ export default function Home() {
 
       {/* 3. Phần Form đặt hàng (Order Form) */}
       <section className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-xl border border-gray-100">
-        <h2 className="text-xl font-bold mb-6 text-center text-gray-900">Đặt hàng nhanh tại đây</h2>
+        <h2 className="text-xl font-bold mb-6 text-center text-gray-900">Nhập thứ bạn cần mua</h2>
         <form className="space-y-4">
         <input 
   type="text" 
-  placeholder="Họ và tên của bạn" 
+  placeholder="What your name ?" 
   className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none text-gray-900 placeholder-gray-900" 
   required 
 />
