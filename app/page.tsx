@@ -23,9 +23,24 @@ export default function Home() {
       <section className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-xl border border-gray-100">
         <h2 className="text-xl font-bold mb-6 text-center text-gray-900">Đặt hàng nhanh tại đây</h2>
         <form className="space-y-4">
-          <input type="text" placeholder="Họ và tên của bạn" className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required />
-          <textarea placeholder="Số Model, thứ bạn cần mua..." className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" rows={4} required></textarea>
-          <input type="text" placeholder="Số điện thoại Zalo" className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required />
+        <input 
+  type="text" 
+  placeholder="Họ và tên của bạn" 
+  className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none text-gray-900 placeholder-gray-900" 
+  required 
+/>
+          <textarea 
+  placeholder="Số Model, thứ bạn cần mua..." 
+  className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none text-gray-900 placeholder-gray-900" 
+  rows={4} 
+  required
+></textarea>
+          <input 
+  type="text" 
+  placeholder="Số điện thoại Zalo" 
+  className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none text-gray-900 placeholder-gray-900" 
+  required 
+/>
           <button className="w-full bg-blue-600 text-white p-3 rounded-lg font-bold hover:bg-blue-700 transition">
             Gửi yêu cầu ngay
           </button>
