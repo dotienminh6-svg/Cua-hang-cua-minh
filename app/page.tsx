@@ -12,8 +12,8 @@ export default function Home() {
 
       {/* 2. Phần giới thiệu (Introduction) */}
       <section className="max-w-4xl mx-auto mt-8 px-6 text-center">
-        <h2 className="text-2xl font-bold mb-4">Chào mừng bạn!</h2>
-        <p className="text-gray-600 leading-relaxed">
+        <h2 className="text-2xl font-bold mb-4 text-gray-900">Chào mừng bạn!</h2>
+        <p className="text-gray-900 leading-relaxed font-medium">
           Tôi bán tất cả những gì bạn cần với chi phí tối ưu nhất. 
           Cam kết hàng chính hãng, hỗ trợ kiểm tra hàng, đổi trả nếu hàng có vấn đề từ NSX.
         </p>
@@ -21,7 +21,7 @@ export default function Home() {
 
       {/* 3. Phần Form đặt hàng (Order Form) */}
       <section className="max-w-md mx-auto mt-10 p-6 bg-white rounded-2xl shadow-xl border border-gray-100">
-        <h2 className="text-xl font-bold mb-6 text-center">Đặt hàng nhanh tại đây</h2>
+        <h2 className="text-xl font-bold mb-6 text-center text-gray-900">Đặt hàng nhanh tại đây</h2>
         <form className="space-y-4">
           <input type="text" placeholder="Họ và tên của bạn" className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required />
           <textarea placeholder="Số Model, thứ bạn cần mua..." className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" rows={4} required></textarea>
@@ -46,7 +46,7 @@ export default function Home() {
       rel="noopener noreferrer" 
       className="text-blue-400 hover:text-blue-300 underline"
     >
-      zalo.me/sdt_cua_ban
+      zalo.me/0782059679
     </a>
   </p>
   
