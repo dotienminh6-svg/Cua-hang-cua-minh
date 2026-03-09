@@ -2,30 +2,34 @@
 import { useState } from 'react';
 
 export default function Home() {
-  const [loading, setLoading] = useState(false);
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setLoading(true);
-    alert("Yêu cầu của bạn đã được ghi nhận! Tôi sẽ sớm liên hệ qua Zalo.");
-    setLoading(false);
-  }
-
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Đặt hàng theo yêu cầu</h1>
-        
-        <label className="block mb-2 font-medium">Mô tả món hàng:</label>
-        <textarea required className="w-full border p-2 mb-4 rounded" rows={4} placeholder="Ví dụ: Giày Nike size 42..."></textarea>
-        
-        <label className="block mb-2 font-medium">Zalo/SĐT liên hệ:</label>
-        <input required type="text" className="w-full border p-2 mb-6 rounded" placeholder="Số điện thoại của bạn" />
-        
-        <button disabled={loading} className="w-full bg-blue-600 text-white p-3 rounded font-bold hover:bg-blue-700">
-          {loading ? "Đang gửi..." : "Gửi yêu cầu tìm hàng"}
-        </button>
-      </form>
+    <main className="min-h-screen bg-gray-50 text-gray-900">
+      {/* Phần giới thiệu */}
+      <header className="bg-white shadow-sm p-6 text-center">
+        <h1 className="text-3xl font-extrabold text-blue-600">Minh Order Hàng Ngoại</h1>
+        <p className="mt-2 text-gray-600">Chuyên order hàng chính hãng từ Nhật, Mỹ, Hàn. Nhanh chóng - Uy tín - Giá tốt.</p>
+      </header>
+
+      {/* Phần Form đặt hàng */}
+      <section className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
+        <h2 className="text-xl font-bold mb-4">Gửi yêu cầu đặt hàng</h2>
+        <form className="space-y-4">
+          <input type="text" placeholder="Tên của bạn" className="w-full border p-3 rounded" required />
+          <textarea placeholder="Link sản phẩm hoặc mô tả..." className="w-full border p-3 rounded" rows={3} required></textarea>
+          <input type="text" placeholder="Số điện thoại Zalo" className="w-full border p-3 rounded" required />
+          <button className="w-full bg-blue-600 text-white p-3 rounded font-bold hover:bg-blue-700">
+            Gửi yêu cầu
+          </button>
+        </form>
+      </section>
+
+      {/* Phần thông tin liên hệ */}
+      <footer className="mt-16 py-8 text-center bg-gray-200">
+        <h3 className="font-bold">Liên hệ với tôi</h3>
+        <p>📞 SĐT: 0782059679</p>
+        <p>💬 Zalo: Zalo.me/0782059679</p>
+        <p className="mt-2 text-sm text-gray-500">© 2026 Minh Order</p>
+      </footer>
     </main>
   );
 }
