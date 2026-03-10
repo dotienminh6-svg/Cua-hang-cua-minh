@@ -9,7 +9,7 @@ export default function Home() {
     e.preventDefault();
     setLoading(true);
 
-    // THAY 3 MÃ CỦA BẠN VÀO DƯỚI ĐÂY
+    // Thông tin EmailJS của bạn đã được giữ nguyên
     emailjs.sendForm('service_u39jdqg', 'template_rhrihtn', e.target, 'lTdh8-6gnfkeO7kfJ')
       .then(() => {
         alert("Đã gửi đơn hàng thành công!");
@@ -25,6 +25,13 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50">
       {/* 1. Thanh tiêu đề (Header) */}
       <header className="bg-blue-600 text-white p-6 shadow-md text-center">
+        {/* LOGO CỦA BẠN Ở ĐÂY */}
+        <img 
+          src="/logo.png" 
+          alt="AllInOneVN Logo" 
+          className="w-32 h-auto mx-auto mb-4 bg-white p-2 rounded-lg" 
+        />
+        
         <h1 className="text-3xl font-extrabold">AllInOneVN</h1>
         <p className="mt-2 text-blue-100">Chúng tôi bán tất cả những gì bạn cần</p>
       </header>
@@ -88,7 +95,7 @@ export default function Home() {
             zalo.me/0782059679
           </a>
         </p>
-        <p className="text-sm text-gray-400">© 2026 Minh Order Service</p>
+        <p className="text-sm text-gray-400">© 2026 AllInOneVN</p>
       </footer>
     </main>
   );
