@@ -22,6 +22,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gray-50 font-sans text-gray-900">
+      {/* HEADER */}
       <header className="bg-white py-2 px-6 border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <img src="/logo.png" alt="Logo" className="h-16 w-auto" />
@@ -29,6 +30,7 @@ export default function Home() {
         </div>
       </header>
 
+      {/* MENU */}
       <nav className="bg-[#337ab7] text-white">
         <div className="max-w-7xl mx-auto flex">
           {['home', 'about', 'news'].map((tab) => (
@@ -43,7 +45,8 @@ export default function Home() {
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto py-10 px-6">
+      {/* NỘI DUNG CHÍNH */}
+      <div className="max-w-7xl mx-auto py-10 px-6 min-h-[400px]">
         {activeTab === 'home' && (
           <div className="grid md:grid-cols-2 gap-12">
             <div>
@@ -79,7 +82,34 @@ export default function Home() {
             </section>
           </div>
         )}
+
+        {activeTab === 'about' && (
+          <div className="bg-white p-8 rounded shadow border border-gray-200">
+            <h2 className="text-3xl font-bold text-blue-900 mb-4">Về AllInOneVN</h2>
+            <p className="text-lg text-gray-700">AllInOneVN là dịch vụ mua hộ hàng ngoại chuyên nghiệp. Chúng tôi cam kết mang đến giải pháp tối ưu, hàng chính hãng và chi phí vận chuyển hợp lý nhất cho mọi khách hàng.</p>
+          </div>
+        )}
+
+        {activeTab === 'news' && (
+          <div className="bg-white p-8 rounded shadow border border-gray-200">
+            <h2 className="text-3xl font-bold text-blue-900 mb-4">Tin tức & Hot Trend</h2>
+            <p className="text-lg text-gray-700">Cập nhật các sản phẩm đang được săn đón nhất từ Nhật, Mỹ, Hàn. Hãy quay lại đây thường xuyên để không bỏ lỡ các ưu đãi mới nhất!</p>
+          </div>
+        )}
       </div>
+
+      {/* FOOTER */}
+      <footer className="bg-gray-800 text-white py-10 text-center mt-10">
+        <h3 className="text-lg font-bold mb-4">Thông tin liên hệ</h3>
+        <p className="mb-1">📞 Hotline: 0782059679</p>
+        <p className="mb-4">
+          💬 Zalo:{" "}
+          <a href="https://zalo.me/0782059679" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
+            zalo.me/0782059679
+          </a>
+        </p>
+        <p className="text-sm text-gray-400">© 2026 Minh Order Service</p>
+      </footer>
     </main>
   );
 }
