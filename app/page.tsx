@@ -110,17 +110,19 @@ export default function Home() {
         </p>
         <p className="text-sm text-gray-400">© 2026 Minh Order Service</p>
       </footer>
-      {/* NÚT ZALO NỔI GÓC MÀN HÌNH */}
+    {/* NÚT ZALO NỔI GÓC MÀN HÌNH - PHIÊN BẢN CHUẨN ZALO */}
 <a 
   href="https://zalo.me/0782059679" 
   target="_blank" 
   rel="noopener noreferrer"
-  className="fixed bottom-6 right-6 z-50 bg-[#0068ff] hover:bg-[#0055cc] text-white p-4 rounded-full shadow-2xl transition-all transform hover:scale-110 flex items-center justify-center animate-bounce"
+  className="fixed bottom-6 right-6 z-50 transition-all transform hover:scale-110 animate-bounce"
   title="Chat với chúng tôi qua Zalo"
 >
-  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 2C6.48 2 2 5.91 2 10.66c0 2.37 1.07 4.54 2.8 6.13L4 21.06l4.28-1.58c1.17.37 2.42.58 3.72.58 5.52 0 10-3.91 10-8.66S17.52 2 12 2zm0 15c-1.12 0-2.18-.19-3.17-.55l-2.09.77.77-2.09c-.66-1.07-1.05-2.31-1.05-3.64 0-3.69 3.58-6.66 8-6.66 4.42 0 8 2.97 8 6.66 0 3.69-3.58 6.66-8 6.66z"/>
-  </svg>
+  <img 
+    src="https://upload.wikimedia.org/wikipedia/commons/9/91/Zalo_icon.png" 
+    alt="Zalo" 
+    className="w-16 h-16 rounded-full shadow-2xl"
+  />
 </a>
     </main>
   );
