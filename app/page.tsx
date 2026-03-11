@@ -92,7 +92,7 @@ export default function Home() {
         )}
         {activeTab === 'news' && (
             <div className="bg-white p-8 rounded shadow border border-gray-200">
-                <h2 className="text-3xl font-bold text-blue-900 mb-4">Tin tức & Hot Trend</h2>
+                <h2 className="text-3xl font-bold text-blue-900 mb-4">Hot Trend</h2>
                 <p className="text-lg text-gray-700">Cập nhật xu hướng mới nhất hàng ngày!</p>
             </div>
         )}
