@@ -69,7 +69,7 @@ export default function Home() {
                 </div>
                 <div>
                   <label className="block font-bold mb-1 text-gray-900">Thông tin thứ bạn cần mua</label>
-                  <textarea name="message" className="w-full border border-gray-400 p-2 rounded text-gray-900 placeholder-gray-500 font-medium" rows={4} placeholder="Tên sản phẩm, mã Model hoặc bất kỳ thông tin về mặt hàng" required></textarea>
+                  <textarea name="message" className="w-full border border-gray-400 p-2 rounded text-gray-900 placeholder-gray-500 font-medium" rows={4} placeholder="Tên sản phẩm, mã Model..." required></textarea>
                 </div>
                 <div>
                   <label className="block font-bold mb-1 text-gray-900">Số điện thoại Zalo</label>
@@ -82,28 +82,13 @@ export default function Home() {
             </section>
           </div>
         )}
-
-        {/* CÁC TAB KHÁC GIỮ NGUYÊN... */}
-        {activeTab === 'about' && (
-            <div className="bg-white p-8 rounded shadow border border-gray-200">
-                <h2 className="text-3xl font-bold text-blue-900 mb-4">Về AllInOneVN</h2>
-                <p className="text-lg text-gray-700">Dịch vụ mua hộ chuyên nghiệp, tận tâm.</p>
-            </div>
-        )}
-        {activeTab === 'news' && (
-            <div className="bg-white p-8 rounded shadow border border-gray-200">
-                <h2 className="text-3xl font-bold text-blue-900 mb-4">Hot Trend</h2>
-                <p className="text-lg text-gray-700">Cập nhật xu hướng mới nhất hàng ngày!</p>
-            </div>
-        )}
       </div>
 
       {/* FOOTER */}
       <footer className="bg-gray-800 text-white py-10 text-center mt-10">
         <h3 className="text-lg font-bold mb-4">Thông tin liên hệ</h3>
-        <p className="mb-1">📞 Hotline: 0782059679</p>
         <p className="mb-4">
-          💬 Zalo: <a href="https://zalo.me/0782059679" className="text-blue-400 underline">zalo.me/0782059679</a>
+          💬 Zalo: <a href="https://zalo.me/0782059679" target="_blank" className="text-blue-400 underline">zalo.me/0782059679</a>
         </p>
       </footer>
 
