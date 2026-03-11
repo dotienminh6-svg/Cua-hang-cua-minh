@@ -89,19 +89,22 @@ export default function Home() {
         <p>Facebook: <a href="https://www.facebook.com/LilM1905" target="_blank" className="text-blue-400 underline">LilM1905</a></p>
       </footer>
 
-      {/* NÚT ZALO NỔI - SỬ DỤNG SVG ĐỂ KHÔNG BAO GIỜ LỖI ẢNH */}
+      {/* NÚT ZALO NỔI - LOGO CHUẨN + HIỆU ỨNG NHÚN NHẢY */}
       <a 
         href="https://zalo.me/0782059679" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="fixed bottom-10 right-10 z-[9999] transition-all transform hover:scale-110 animate-bounce"
+        className="fixed bottom-8 right-8 z-[9999] transition-all transform hover:scale-110 animate-bounce"
+        title="Chat với chúng tôi qua Zalo"
       >
-        <div className="w-16 h-16 bg-[#0068ff] rounded-full flex items-center justify-center shadow-2xl">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22.5 11.5C22.5 16.4706 17.7985 20.5 12 20.5C11.127 20.5 10.2795 20.4074 9.471 20.2319L5.5 22.5V18.636C3.0645 16.9421 1.5 14.3982 1.5 11.5C1.5 6.52944 6.20152 2.5 12 2.5C17.7985 2.5 22.5 6.52944 22.5 11.5Z" stroke="white" strokeWidth="1.5"/>
-            <text x="50%" y="55%" fontSize="6" fontWeight="bold" textAnchor="middle" fill="white" fontFamily="Arial">Zalo</text>
-          </svg>
-        </div>
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/9/91/Zalo_icon.png" 
+          alt="Zalo" 
+          className="w-16 h-16 drop-shadow-2xl"
+          onError={(e) => {
+            e.currentTarget.src = "https://cdn.haitrieu.com/wp-content/uploads/2022/01/Logo-Zalo-Arc.png";
+          }}
+        />
       </a>
     </main>
   );
