@@ -45,7 +45,6 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* NỘI DUNG CHÍNH */}
       <div className="max-w-7xl mx-auto py-10 px-6 min-h-[400px]">
         {activeTab === 'home' && (
           <div className="grid md:grid-cols-2 gap-12">
@@ -84,26 +83,24 @@ export default function Home() {
         )}
       </div>
 
-      {/* FOOTER */}
       <footer className="bg-gray-800 text-white py-10 text-center mt-10">
         <h3 className="text-lg font-bold mb-4">Thông tin liên hệ</h3>
-        <p>https://www.facebook.com/LilM1905</p>
-        <p className="mb-4">
-        </p>
+        <p className="mb-2">📞 Hotline: 0782059679</p>
+        <p>Facebook: <a href="https://www.facebook.com/LilM1905" target="_blank" className="text-blue-400 underline">LilM1905</a></p>
       </footer>
 
-      {/* NÚT ZALO NỔI (ĐÃ SỬA LINK ẢNH ĐỂ KHÔNG BỊ LỖI) */}
+      {/* NÚT ZALO NỔI - DÙNG LINK ẢNH HD CHUẨN */}
       <a 
         href="https://zalo.me/0782059679" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-[9999] transition-all transform hover:scale-110 animate-bounce"
+        className="fixed bottom-6 right-6 z-[9999] transition-all transform hover:scale-110"
         title="Chat với chúng tôi qua Zalo"
       >
         <img 
-          src="https://zalo.me/favicon.ico" 
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Zalo_icon.png/600px-Zalo_icon.png" 
           alt="Zalo" 
-          className="w-16 h-16 rounded-full shadow-2xl"
+          className="w-16 h-16 rounded-full shadow-2xl shadow-blue-500/50"
         />
       </a>
     </main>
