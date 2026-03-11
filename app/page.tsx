@@ -88,11 +88,11 @@ export default function Home() {
       <footer className="bg-gray-800 text-white py-10 text-center mt-10">
         <h3 className="text-lg font-bold mb-4">Thông tin liên hệ</h3>
         <p className="mb-4">
-          💬 Zalo: <a href="https://zalo.me/0782059679" target="_blank" className="text-blue-400 underline">zalo.me/0782059679</a>
+          💬 Zalo: <a href="https://zalo.me/0782059679" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">zalo.me/0782059679</a>
         </p>
       </footer>
 
-      {/* NÚT ZALO NỔI GÓC MÀN HÌNH */}
+      {/* NÚT ZALO NỔI (ĐÃ SỬA LINK ẢNH ĐỂ KHÔNG BỊ LỖI) */}
       <a 
         href="https://zalo.me/0782059679" 
         target="_blank" 
@@ -101,7 +101,7 @@ export default function Home() {
         title="Chat với chúng tôi qua Zalo"
       >
         <img 
-          src="https://upload.wikimedia.org/wikipedia/commons/9/91/Zalo_icon.png" 
+          src="https://zalo.me/favicon.ico" 
           alt="Zalo" 
           className="w-16 h-16 rounded-full shadow-2xl"
         />
