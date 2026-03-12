@@ -11,7 +11,7 @@ export default function Home() {
     setLoading(true);
     emailjs.sendForm('service_u39jdqg', 'template_rhrihtn', e.target, 'lTdh8-6gnfkeO7kfJ')
       .then(() => {
-        alert("Đã gửi đơn hàng thành công!");
+        alert("Đã gửi đơn hàng thành công! Đợi chút Minh sẽ check và báo giá bạn ngay.");
         setLoading(false);
         e.target.reset();
       }, (error) => {
@@ -22,22 +22,29 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gray-50 font-sans text-gray-900 relative">
-      {/* HEADER - Đã trả lại logo.png của bạn */}
-      <header className="bg-white py-2 px-6 border-b border-gray-200">
+      {/* HEADER */}
+      <header className="bg-white py-3 px-6 border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <img src="/logo.png" alt="Logo" className="h-16 w-auto" />
-          <p className="text-blue-800 font-bold hidden md:block">AllInOneVN - TẤT CẢ CHỈ TRONG MỘT CLICK</p>
+          <div className="flex items-center gap-2">
+            <div className="bg-blue-600 text-white p-1.5 rounded font-black text-lg">A1</div>
+            <span className="text-blue-900 font-black text-xl tracking-tighter">AllInOneVN</span>
+          </div>
+          <p className="text-blue-800 font-bold hidden md:block uppercase text-xs tracking-widest">
+            Tất cả chỉ trong một click
+          </p>
         </div>
       </header>
 
-      {/* MENU - Giữ nguyên các tab của bạn */}
-      <nav className="bg-[#337ab7] text-white">
-        <div className="max-w-7xl mx-auto flex">
+      {/* MENU */}
+      <nav className="bg-[#337ab7] text-white sticky top-0 z-50 shadow-md">
+        <div className="max-w-7xl mx-auto flex overflow-x-auto scrollbar-hide">
           {['home', 'about', 'news'].map((tab) => (
             <button 
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-8 py-3 font-bold uppercase text-sm transition-all ${activeTab === tab ? 'bg-[#23527c]' : 'hover:bg-[#286090]'}`}
+              className={`px-8 py-4 font-bold uppercase text-xs tracking-widest transition-all whitespace-nowrap ${
+                activeTab === tab ? 'bg-[#23527c] border-b-4 border-yellow-400' : 'hover:bg-[#286090]'
+              }`}
             >
               {tab === 'home' ? 'Trang chủ' : tab === 'about' ? 'Giới thiệu' : 'Hot trend'}
             </button>
@@ -50,123 +57,133 @@ export default function Home() {
         
         {/* TRANG CHỦ */}
         {activeTab === 'home' && (
-          <div className="space-y-12">
-            <div className="grid md:grid-cols-2 gap-12">
+          <div className="space-y-16">
+            <div className="grid md:grid-cols-2 gap-12 items-start">
               <div>
-                <h2 className="text-4xl font-black text-blue-900 mb-6 uppercase">Đặt hàng nhanh</h2>
-                <div className="text-gray-800 font-medium space-y-4 text-lg">
-                  <p>AllInOneVN cung cấp tất cả những gì bạn cần:</p>
-                  <ul className="list-disc ml-5 space-y-2">
-                    <li>Tìm kiếm nhanh chóng từ khắp nơi</li>
-                    <li>Tiết kiệm thời gian và chi phí vận chuyển</li>
-                    <li>Giá cả hợp lý, báo giá công khai</li>
-                    <li>Hỗ trợ săn sale, đấu giá trực tuyến</li>
+                <h2 className="text-5xl font-black text-blue-900 mb-6 uppercase leading-tight">
+                  Mua sắm quốc tế <br/><span className="text-blue-600">Dễ dàng hơn</span>
+                </h2>
+                <div className="text-gray-800 font-medium space-y-4 text-lg leading-relaxed">
+                  <p>AllInOneVN - Giải pháp mua hộ hàng đầu từ Mỹ, Nhật, Hàn, Trung Quốc...</p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-2">✅ Tiết kiệm chi phí vận chuyển</li>
+                    <li className="flex items-center gap-2">✅ Báo giá nhanh trong 5-10 phút</li>
+                    <li className="flex items-center gap-2">✅ Bảo hiểm hàng hóa 100%</li>
                   </ul>
-                  <p className="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 italic">
-                    "Chỉ cần gửi thông tin, chúng tôi sẽ lo phần còn lại!"
-                  </p>
+                  <div className="pt-4">
+                    <button onClick={() => window.scrollTo({top: 500, behavior: 'smooth'})} className="bg-blue-100 text-blue-700 px-6 py-2 rounded-full font-bold text-sm hover:bg-blue-200 transition-colors">
+                      Tìm hiểu quy trình ↓
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              <section className="bg-white p-6 rounded border border-gray-300 shadow-sm">
+              {/* FORM */}
+              <section className="bg-white p-8 rounded-2xl border border-gray-200 shadow-2xl relative">
+                <div className="absolute -top-3 -right-3 bg-yellow-400 text-blue-900 font-black px-4 py-1 rounded-lg shadow-md text-xs uppercase animate-pulse">
+                  Quick Order
+                </div>
                 <form className="space-y-4" onSubmit={sendEmail}>
                   <div>
-                    <label className="block font-bold mb-1 text-gray-900">Họ và tên của bạn</label>
-                    <input name="name" className="w-full border border-gray-400 p-2 rounded text-gray-900 placeholder-gray-400 font-medium outline-none focus:border-blue-500" placeholder="Nhập tên..." required />
+                    <label className="block font-bold mb-1 text-gray-700 text-sm">Tên của bạn</label>
+                    <input name="name" className="w-full border border-gray-300 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nhập tên..." required />
                   </div>
                   <div>
-                    <label className="block font-bold mb-1 text-gray-900">Thông tin sản phẩm cần mua</label>
-                    <textarea name="message" className="w-full border border-gray-400 p-2 rounded text-gray-900 placeholder-gray-400 font-medium outline-none focus:border-blue-500" rows={4} placeholder="Link sản phẩm, tên hoặc mã model..." required></textarea>
+                    <label className="block font-bold mb-1 text-gray-700 text-sm">Sản phẩm cần mua</label>
+                    <textarea name="message" className="w-full border border-gray-300 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" rows={3} placeholder="Link sản phẩm hoặc tên món đồ..." required></textarea>
                   </div>
                   <div>
-                    <label className="block font-bold mb-1 text-gray-900">Số điện thoại Zalo</label>
-                    <input name="phone" className="w-full border border-gray-400 p-2 rounded text-gray-900 placeholder-gray-400 font-medium outline-none focus:border-blue-500" placeholder="Số Zalo để báo giá..." required />
+                    <label className="block font-bold mb-1 text-gray-700 text-sm">Số điện thoại Zalo</label>
+                    <input name="phone" className="w-full border border-gray-300 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="Để Minh báo giá cho bạn..." required />
                   </div>
-                  <button type="submit" className="w-full bg-[#337ab7] text-white p-3 font-bold uppercase rounded hover:bg-blue-800 transition-colors shadow-lg">
-                    {loading ? "Đang gửi yêu cầu..." : "Gửi yêu cầu ngay"}
+                  <button type="submit" className="w-full bg-[#337ab7] text-white p-4 font-bold uppercase rounded-xl hover:bg-blue-800 shadow-lg transform active:scale-95 transition-all">
+                    {loading ? "Đang gửi đi..." : "Gửi yêu cầu ngay"}
                   </button>
                 </form>
               </section>
             </div>
 
-            {/* PHẦN BỔ SUNG: QUY TRÌNH 3 BƯỚC (Dựa trên phong cách của Minh) */}
-            <div className="pt-10 border-t border-gray-200">
-               <h3 className="text-2xl font-black text-center mb-8 text-blue-900 uppercase">Quy trình đơn giản</h3>
-               <div className="grid md:grid-cols-3 gap-6">
-                  <div className="bg-white p-6 rounded border border-gray-200 text-center">
-                    <div className="w-10 h-10 bg-[#337ab7] text-white rounded-full flex items-center justify-center font-bold mx-auto mb-3">1</div>
-                    <h4 className="font-bold mb-1">Gửi thông tin</h4>
-                    <p className="text-sm text-gray-600">Dán link sản phẩm vào form hoặc gửi qua Zalo.</p>
+            {/* QUY TRÌNH 3 BƯỚC MỚI */}
+            <div className="pt-10">
+               <h3 className="text-2xl font-black text-center mb-10 text-blue-900 uppercase tracking-widest">Quy trình đơn giản</h3>
+               <div className="grid md:grid-cols-3 gap-8">
+                  <div className="bg-white p-8 rounded-2xl text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">1</div>
+                    <h4 className="font-bold text-lg mb-2">Gửi thông tin</h4>
+                    <p className="text-sm text-gray-500">Bạn chỉ cần gửi link hoặc tên sản phẩm vào form phía trên.</p>
                   </div>
-                  <div className="bg-white p-6 rounded border border-gray-200 text-center">
-                    <div className="w-10 h-10 bg-[#337ab7] text-white rounded-full flex items-center justify-center font-bold mx-auto mb-3">2</div>
-                    <h4 className="font-bold mb-1">Báo giá & Chốt</h4>
-                    <p className="text-sm text-gray-600">Minh báo giá trọn gói. Bạn xác nhận đặt hàng.</p>
+                  <div className="bg-white p-8 rounded-2xl text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">2</div>
+                    <h4 className="font-bold text-lg mb-2">Báo giá & Đặt cọc</h4>
+                    <p className="text-sm text-gray-500">AllInOneVN gửi báo giá chi tiết. Bạn xác nhận và đặt cọc đơn hàng.</p>
                   </div>
-                  <div className="bg-white p-6 rounded border border-gray-200 text-center">
-                    <div className="w-10 h-10 bg-[#337ab7] text-white rounded-full flex items-center justify-center font-bold mx-auto mb-3">3</div>
-                    <h4 className="font-bold mb-1">Nhận hàng</h4>
-                    <p className="text-sm text-gray-600">Hàng về tận tay bạn sau 7-10 ngày làm việc.</p>
+                  <div className="bg-white p-8 rounded-2xl text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">3</div>
+                    <h4 className="font-bold text-lg mb-2">Nhận hàng</h4>
+                    <p className="text-sm text-gray-500">Hàng về kho Việt Nam sẽ được ship đến tận cửa nhà bạn trong 7-10 ngày.</p>
                   </div>
                </div>
             </div>
           </div>
         )}
 
-        {/* TRANG GIỚI THIỆU - Giữ nguyên nội dung của Minh */}
+        {/* TRANG GIỚI THIỆU */}
         {activeTab === 'about' && (
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-black text-blue-900 mb-6 border-b-2 border-blue-900 pb-2 uppercase">Về AllInOneVN</h2>
-            <div className="space-y-6 text-lg leading-relaxed text-gray-700">
+          <div className="max-w-4xl mx-auto bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
+            <h2 className="text-3xl font-black text-blue-900 mb-8 border-b pb-4">VỀ CHÚNG TÔI</h2>
+            <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <p>
-                <span className="font-bold text-blue-800 text-xl">AllInOneVN</span> ra đời với sứ mệnh kết nối người tiêu dùng Việt Nam với những sản phẩm chất lượng từ khắp nơi. Với sức trẻ, nhiệt huyết, tôi tin chắc bạn sẽ hài lòng khi sử dụng dịch vụ của chúng tôi.
+                <span className="font-bold text-blue-800 text-xl underline decoration-yellow-400">AllInOneVN</span> không chỉ đơn thuần là một dịch vụ mua hộ. Chúng tôi là người bạn đồng hành giúp bạn tiếp cận nguồn hàng chất lượng từ khắp thế giới một cách an toàn nhất.
               </p>
-              <div className="grid md:grid-cols-2 gap-6 mt-8">
-                <div className="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                  <h4 className="font-bold text-blue-800 mb-2 text-lg">Tiết kiệm thời gian</h4>
-                  <p className="text-sm">Chúng tôi hỗ trợ bạn bằng tất cả khả năng và công sức giúp bạn có được thứ mình muốn, cần trong thời gian sớm nhất.</p>
-                </div>
-                <div className="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                  <h4 className="font-bold text-blue-800 mb-2 text-lg">Cam kết uy tín</h4>
-                  <p className="text-sm">Đội ngũ AllInOneVN luôn đặt sự minh bạch và trách nhiệm lên hàng đầu, đảm bảo hàng hóa về tay đúng theo yêu cầu và nhanh nhất.</p>
-                </div>
+              <div className="grid md:grid-cols-2 gap-6 pt-6">
+                 <div className="p-6 bg-gray-50 rounded-2xl border-l-4 border-blue-500">
+                    <h5 className="font-bold text-blue-700 mb-2">Sứ mệnh</h5>
+                    <p className="text-sm">Xóa bỏ rào cản ngôn ngữ và địa lý, giúp mọi người đều có thể mua hàng hiệu với giá gốc.</p>
+                 </div>
+                 <div className="p-6 bg-gray-50 rounded-2xl border-l-4 border-green-500">
+                    <h5 className="font-bold text-green-700 mb-2">Giá trị</h5>
+                    <p className="text-sm">Minh bạch trong báo giá, tận tâm trong hỗ trợ và tốc độ trong vận chuyển.</p>
+                 </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* TRANG HOT TREND - Giữ nguyên của Minh */}
+        {/* TRANG HOT TREND */}
         {activeTab === 'news' && (
-          <div className="text-center py-20">
-            <h2 className="text-3xl font-black text-blue-900 mb-4 uppercase">Sản phẩm Hot Trend</h2>
-            <p className="text-gray-600 italic">Tính năng đang được cập nhật. Những xu hướng mua sắm mới nhất sẽ sớm xuất hiện tại đây!</p>
+          <div className="text-center py-20 bg-white rounded-3xl border border-dashed border-gray-300">
+            <div className="text-5xl mb-4">⚡</div>
+            <h2 className="text-3xl font-black text-blue-900 mb-2 uppercase">Hot Trend</h2>
+            <p className="text-gray-500 italic">Hàng ngàn sản phẩm đang sale sập sàn tại Amazon, Rakuten... sẽ cập nhật tại đây!</p>
           </div>
         )}
       </div>
 
-      {/* FOOTER - Giữ nguyên thông tin của Minh */}
-      <footer className="bg-gray-800 text-white py-10 text-center mt-10">
-        <h3 className="text-lg font-bold mb-4 uppercase tracking-wider">Liên hệ với tôi</h3>
-        <p className="mb-2 flex items-center justify-center gap-2">
-           <span>📞 Hotline:</span> 
-           <span className="font-bold text-blue-400">0782059679</span>
-        </p>
-        <p>Facebook: <a href="https://www.facebook.com/LilM1905" target="_blank" className="text-blue-400 underline hover:text-blue-300">LilM1905</a></p>
+      {/* FOOTER */}
+      <footer className="bg-gray-900 text-white py-14 px-6 mt-20">
+        <div className="max-w-7xl mx-auto flex flex-col items-center space-y-6">
+          <div className="text-2xl font-black tracking-tighter italic">AllInOneVN</div>
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400 uppercase font-bold tracking-widest">
+            <span>📞 0782059679</span>
+            <span>📍 Hà Nội - Quảng Ninh</span>
+          </div>
+          <a href="https://www.facebook.com/LilM1905" target="_blank" className="bg-blue-600 px-6 py-2 rounded-full font-bold hover:bg-blue-500 transition-colors">
+            Follow Fanpage
+          </a>
+          <p className="text-gray-600 text-[10px] pt-10">© 2026 AllInOneVN. Created by Do Tien Minh.</p>
+        </div>
       </footer>
 
-      {/* NÚT ZALO NỔI - Giữ nguyên SVG của Minh */}
+      {/* ZALO BUTTON */}
       <a 
         href="https://zalo.me/0782059679" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="fixed bottom-10 right-10 z-[9999] transition-all transform hover:scale-110 animate-bounce"
-        title="Chat Zalo ngay"
+        className="fixed bottom-8 right-8 z-[9999] hover:scale-110 transition-transform animate-bounce"
       >
-        <div className="w-16 h-16 bg-[#0068ff] rounded-full flex items-center justify-center shadow-[0_10px_30px_rgba(0,104,255,0.5)]">
-           <svg width="40" height="40" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M410.64 245.333C410.64 344.4 330.347 424.693 231.28 424.693C212.827 424.693 195.12 421.84 178.48 416.587L96.0001 448L127.413 365.52C122.16 348.88 119.307 331.173 119.307 312.72C119.307 213.653 199.6 133.36 298.667 133.36C397.733 133.36 478.027 213.653 478.027 312.72C478.027 330.147 475.493 346.96 470.853 362.72" fill="#0068FF"/>
-            <path d="M410.64 245.333C410.64 146.267 330.347 66 231.28 66C132.213 66 51.9201 146.267 51.9201 245.333C51.9201 262.76 54.4534 279.573 59.0934 295.333C59.0934 295.333 59.0934 295.333 59.0934 295.333C33.6801 371.787 32 377.013 32 378.293C32 381.76 34.8267 384.587 38.2934 384.587C39.5734 384.587 44.8001 382.907 121.253 357.52C137.013 362.16 153.827 364.693 171.253 364.693C270.32 364.693 350.613 284.4 350.613 185.333C350.613 183.787 350.587 182.267 350.507 180.747C385.92 194.507 410.64 217.173 410.64 245.333Z" fill="white"/>
-            <path d="M129.547 210.453H212.827V229.493H162.773L212.827 283.413V302.453H129.547V283.413H181.28L129.547 227.467V210.453Z" fill="#0068FF"/>
+        <div className="w-16 h-16 bg-[#0068ff] rounded-full flex items-center justify-center shadow-2xl border-4 border-white">
+           <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.477 2 2 6.477 2 12C2 13.591 2.369 15.093 3.024 16.425L2.012 21.056C1.933 21.417 2.247 21.731 2.608 21.652L7.239 20.64C8.571 21.295 10.073 21.664 11.664 21.664C17.187 21.664 21.664 17.187 21.664 11.664C21.664 6.141 17.187 1.664 11.664 1.664L12 2Z"/>
           </svg>
         </div>
       </a>
