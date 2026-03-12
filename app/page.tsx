@@ -95,16 +95,16 @@ export default function Home() {
             <h2 className="text-3xl font-black text-blue-900 mb-6 border-b-2 border-blue-900 pb-2 uppercase">Về AllInOneVN</h2>
             <div className="space-y-6 text-lg leading-relaxed text-gray-700">
               <p>
-                <span className="font-bold text-blue-800 text-xl">AllInOneVN</span> ra đời với sứ mệnh kết nối người tiêu dùng Việt Nam với những sản phẩm chất lượng từ khắp nơi trên thế giới.
+                <span className="font-bold text-blue-800 text-xl">AllInOneVN</span> ra đời với sứ mệnh kết nối người tiêu dùng Việt Nam với những sản phẩm chất lượng từ khắp nơi. Với sức trẻ, nhiệt huyết, tôi tin chắc bạn sẽ hài lòng khi sử dụng dịch vụ của chúng tôi.
               </p>
               <div className="grid md:grid-cols-2 gap-6 mt-8">
                 <div className="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                  <h4 className="font-bold text-blue-800 mb-2 text-lg">Dịch vụ Mua hộ</h4>
-                  <p className="text-sm">Chúng tôi hỗ trợ bạn mua hàng trực tiếp từ các trang web lớn như Amazon, Rakuten (Nhật), eBay (Mỹ), và Coupang (Hàn).</p>
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">Tích kiệm thời gian</h4>
+                  <p className="text-sm">Chúng tôi hỗ trợ bạn bằng tất cả khả năng và công sức giúp bạn có được thứ mình muốn, cần trong thời gian sớm nhất.</p>
                 </div>
                 <div className="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                   <h4 className="font-bold text-blue-800 mb-2 text-lg">Cam kết uy tín</h4>
-                  <p className="text-sm">Đội ngũ AllInOneVN luôn đặt sự minh bạch và trách nhiệm lên hàng đầu, đảm bảo hàng hóa về tay nguyên vẹn và nhanh nhất.</p>
+                  <p className="text-sm">Đội ngũ AllInOneVN luôn đặt sự minh bạch và trách nhiệm lên hàng đầu, đảm bảo hàng hóa về tay đúng theo yêu cầu và nhanh nhất.</p>
                 </div>
               </div>
             </div>
