@@ -22,20 +22,23 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gray-50 font-sans text-gray-900 relative">
-     {/* HEADER */}
-<header className="bg-white py-3 px-6 border-b border-gray-200">
+      {/* HEADER */}
+<header className="bg-white py-4 px-6 border-b border-gray-100 shadow-sm">
   <div className="max-w-7xl mx-auto flex items-center justify-between">
     
-    {/* Phía bên trái: Logo và chữ AllInOneVN có khoảng cách (gap-3) */}
-    <div className="flex items-center gap-3">
-      <img src="/logo.png" alt="AllInOneVN Logo" className="h-12 w-auto object-contain" />
-      <span className="text-blue-900 font-black text-2xl tracking-tighter">AllInOneVN</span>
+    {/* Góc trái: Chỉ có Logo */}
+    <div className="flex items-center">
+      <img src="/logo.png" alt="Logo" className="h-12 w-auto object-contain" />
     </div>
     
-    {/* Phía bên phải: Dòng thông điệp */}
-    <p className="text-blue-800 font-bold hidden md:block uppercase text-xs tracking-widest">
-      Tất cả chỉ trong một click
-    </p>
+    {/* Góc phải: AllInOneVN và slogan */}
+    <div className="flex items-center gap-4">
+      <span className="text-blue-950 font-extrabold text-2xl tracking-tight">AllInOneVN</span>
+      <div className="h-6 w-[1px] bg-gray-300 hidden md:block"></div>
+      <p className="text-blue-700 font-bold hidden md:block uppercase text-[11px] tracking-[0.2em]">
+        Tất cả chỉ trong một click
+      </p>
+    </div>
     
   </div>
 </header>
