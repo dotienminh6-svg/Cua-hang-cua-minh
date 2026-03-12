@@ -37,59 +37,100 @@ export default function Home() {
             <button 
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-8 py-3 font-bold uppercase text-sm ${activeTab === tab ? 'bg-[#23527c]' : 'hover:bg-[#286090]'}`}
+              className={`px-8 py-3 font-bold uppercase text-sm transition-all ${activeTab === tab ? 'bg-[#23527c]' : 'hover:bg-[#286090]'}`}
             >
-              {tab === 'home' ? 'Trang chủ' : tab === 'about' ? 'Giới thiệu' : 'Tin tức'}
+              {tab === 'home' ? 'Trang chủ' : tab === 'about' ? 'Giới thiệu' : 'Hot trend'}
             </button>
           ))}
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto py-10 px-6 min-h-[400px]">
+      {/* NỘI DUNG CHÍNH */}
+      <div className="max-w-7xl mx-auto py-10 px-6 min-h-[500px]">
+        
+        {/* TRANG CHỦ */}
         {activeTab === 'home' && (
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-4xl font-black text-blue-900 mb-6">ĐẶT HÀNG NHANH</h2>
+              <h2 className="text-4xl font-black text-blue-900 mb-6 uppercase">Đặt hàng nhanh</h2>
               <div className="text-gray-800 font-medium space-y-4 text-lg">
                 <p>AllInOneVN cung cấp tất cả những gì bạn cần:</p>
-                <ul className="list-disc ml-5">
-                  <li>Nhật Bản (Amazon, Rakuten, Yahoo...)</li>
-                  <li>Hoa Kỳ (eBay, Amazon, Jomashop...)</li>
-                  <li>Hàn Quốc (Gmarket, Coupang...)</li>
+                <ul className="list-disc ml-5 space-y-2">
+                  <li>Tìm kiếm nhanh chóng từ Nhật, Mỹ, Hàn...</li>
+                  <li>Tiết kiệm thời gian và chi phí vận chuyển</li>
+                  <li>Giá cả hợp lý, báo giá công khai</li>
+                  <li>Hỗ trợ săn sale, đấu giá trực tuyến</li>
                 </ul>
+                <p className="mt-6 p-4 bg-blue-50 border-l-4 border-blue-500 italic">
+                  "Chỉ cần gửi thông tin, chúng tôi sẽ lo phần còn lại!"
+                </p>
               </div>
             </div>
 
             <section className="bg-white p-6 rounded border border-gray-300 shadow-sm">
               <form className="space-y-4" onSubmit={sendEmail}>
                 <div>
-                  <label className="block font-bold mb-1 text-gray-900">What Your Name</label>
-                  <input name="name" className="w-full border border-gray-400 p-2 rounded text-gray-900 placeholder-gray-500 font-medium" placeholder="Nhập tên của bạn..." required />
+                  <label className="block font-bold mb-1 text-gray-900">Họ và tên của bạn</label>
+                  <input name="name" className="w-full border border-gray-400 p-2 rounded text-gray-900 placeholder-gray-400 font-medium outline-none focus:border-blue-500" placeholder="Nhập tên..." required />
                 </div>
                 <div>
-                  <label className="block font-bold mb-1 text-gray-900">Thông tin thứ bạn cần mua</label>
-                  <textarea name="message" className="w-full border border-gray-400 p-2 rounded text-gray-900 placeholder-gray-500 font-medium" rows={4} placeholder="Tên sản phẩm, mã Model..." required></textarea>
+                  <label className="block font-bold mb-1 text-gray-900">Thông tin sản phẩm cần mua</label>
+                  <textarea name="message" className="w-full border border-gray-400 p-2 rounded text-gray-900 placeholder-gray-400 font-medium outline-none focus:border-blue-500" rows={4} placeholder="Link sản phẩm, tên hoặc mã model..." required></textarea>
                 </div>
                 <div>
                   <label className="block font-bold mb-1 text-gray-900">Số điện thoại Zalo</label>
-                  <input name="phone" className="w-full border border-gray-400 p-2 rounded text-gray-900 placeholder-gray-500 font-medium" placeholder="Nhập số Zalo..." required />
+                  <input name="phone" className="w-full border border-gray-400 p-2 rounded text-gray-900 placeholder-gray-400 font-medium outline-none focus:border-blue-500" placeholder="Số Zalo để báo giá..." required />
                 </div>
-                <button type="submit" className="w-full bg-[#337ab7] text-white p-3 font-bold uppercase rounded hover:bg-blue-800">
-                  {loading ? "Đang gửi..." : "Gửi yêu cầu ngay"}
+                <button type="submit" className="w-full bg-[#337ab7] text-white p-3 font-bold uppercase rounded hover:bg-blue-800 transition-colors shadow-lg">
+                  {loading ? "Đang gửi yêu cầu..." : "Gửi yêu cầu ngay"}
                 </button>
               </form>
             </section>
           </div>
         )}
+
+        {/* TRANG GIỚI THIỆU */}
+        {activeTab === 'about' && (
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-black text-blue-900 mb-6 border-b-2 border-blue-900 pb-2 uppercase">Về AllInOneVN</h2>
+            <div className="space-y-6 text-lg leading-relaxed text-gray-700">
+              <p>
+                <span className="font-bold text-blue-800 text-xl">AllInOneVN</span> ra đời với sứ mệnh kết nối người tiêu dùng Việt Nam với những sản phẩm chất lượng từ khắp nơi trên thế giới.
+              </p>
+              <div className="grid md:grid-cols-2 gap-6 mt-8">
+                <div className="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">Dịch vụ Mua hộ</h4>
+                  <p className="text-sm">Chúng tôi hỗ trợ bạn mua hàng trực tiếp từ các trang web lớn như Amazon, Rakuten (Nhật), eBay (Mỹ), và Coupang (Hàn).</p>
+                </div>
+                <div className="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                  <h4 className="font-bold text-blue-800 mb-2 text-lg">Cam kết uy tín</h4>
+                  <p className="text-sm">Đội ngũ AllInOneVN luôn đặt sự minh bạch và trách nhiệm lên hàng đầu, đảm bảo hàng hóa về tay nguyên vẹn và nhanh nhất.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TRANG HOT TREND */}
+        {activeTab === 'news' && (
+          <div className="text-center py-20">
+            <h2 className="text-3xl font-black text-blue-900 mb-4 uppercase">Sản phẩm Hot Trend</h2>
+            <p className="text-gray-600 italic">Tính năng đang được cập nhật. Những xu hướng mua sắm mới nhất sẽ sớm xuất hiện tại đây!</p>
+          </div>
+        )}
       </div>
 
+      {/* FOOTER */}
       <footer className="bg-gray-800 text-white py-10 text-center mt-10">
-        <h3 className="text-lg font-bold mb-4">liên hệ với tôi</h3>
-        <p className="mb-2">📞 Hotline: 0782059679</p>
-        <p>Facebook: <a href="https://www.facebook.com/LilM1905" target="_blank" className="text-blue-400 underline">LilM1905</a></p>
+        <h3 className="text-lg font-bold mb-4 uppercase tracking-wider">Liên hệ với tôi</h3>
+        <p className="mb-2 flex items-center justify-center gap-2">
+           <span>📞 Hotline:</span> 
+           <span className="font-bold text-blue-400">0782059679</span>
+        </p>
+        <p>Facebook: <a href="https://www.facebook.com/LilM1905" target="_blank" className="text-blue-400 underline hover:text-blue-300">LilM1905</a></p>
       </footer>
 
-      {/* NÚT ZALO NỔI - DÙNG LOGO EMBEDDED KHÔNG LO LỖI ẢNH */}
+      {/* NÚT ZALO NỔI */}
       <a 
         href="https://zalo.me/0782059679" 
         target="_blank" 
