@@ -159,20 +159,20 @@ export default function Home() {
 
         {/* TRANG HOT TREND */}
         {activeTab === 'news' && (
-  <div className="grid md:grid-cols-3 gap-6">
-    {[1, 2, 3].map((i) => (
-      <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all">
-        <div className="h-48 bg-gray-200 animate-pulse"></div> {/* Thay bằng ảnh sản phẩm thật */}
-        <div className="p-4">
-          <span className="text-red-500 font-bold text-xs uppercase">Đang giảm giá</span>
-          <h4 className="font-bold mt-1 text-blue-900">Sản phẩm Hot Trend {i}</h4>
-          <p className="text-sm text-gray-500 mt-2">Mô tả ngắn gọn về món đồ đang cực hot tại Mỹ/Nhật...</p>
-          <button onClick={() => setActiveTab('home')} className="mt-4 w-full py-2 bg-blue-50 text-blue-600 rounded-lg font-bold text-sm">Gửi yêu cầu mua ngay</button>
-        </div>
-      </div>
-    ))}
-  </div>
-)}
+          <div className="grid md:grid-cols-3 gap-6">
+             {[1, 2, 3].map((i) => (
+               <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all">
+                 <div className="h-48 bg-gray-200 animate-pulse"></div> {/* Thay bằng ảnh sản phẩm thật */}
+                 <div className="p-4">
+                   <span className="text-red-500 font-bold text-xs uppercase">Đang giảm giá</span>
+                   <h4 className="font-bold mt-1 text-blue-900">Sản phẩm Hot Trend {i}</h4>
+                   <p className="text-sm text-gray-500 mt-2">Mô tả ngắn gọn về món đồ đang cực hot tại Mỹ/Nhật...</p>
+                   <button onClick={() => setActiveTab('home')} className="mt-4 w-full py-2 bg-blue-50 text-blue-600 rounded-lg font-bold text-sm">Gửi yêu cầu mua ngay</button>
+                 </div>
+               </div>
+             ))}
+           </div>
+         )}
 
       {/* FOOTER */}
       <footer className="bg-gray-900 text-white py-14 px-6 mt-20">
