@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google"; // 1. Import font Nunito
+import { Montserrat } from "next/font/google"; // Font này tròn và rất sang
 import "./globals.css";
 
-// 2. Cấu hình font
-const nunito = Nunito({ 
-  subsets: ["latin", "vietnamese"], // Hỗ trợ tiếng Việt
-  variable: "--font-nunito",
+const montserrat = Montserrat({
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
@@ -15,13 +15,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="vi">
-      {/* 3. Áp dụng font vào thẻ body */}
-      <body className={`${nunito.variable} font-sans antialiased`}>
+      <body className={`${montserrat.className} antialiased`}>
         {children}
       </body>
     </html>
