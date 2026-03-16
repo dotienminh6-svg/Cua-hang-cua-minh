@@ -173,6 +173,7 @@ export default function Home() {
              ))}
            </div>
          )}
+       </div> {/* <-- DÒNG NÀY BỊ THIẾU TRONG CODE CŨ CỦA BẠN */}
 
       {/* FOOTER */}
       <footer className="bg-gray-900 text-white py-14 px-6 mt-20">
