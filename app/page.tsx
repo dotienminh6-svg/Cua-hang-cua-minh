@@ -141,7 +141,7 @@ export default function Home() {
             <h2 className="text-3xl font-black text-blue-900 mb-8 border-b pb-4">VỀ CHÚNG TÔI</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <p>
-                <span className="font-bold text-blue-800 text-xl underline decoration-yellow-400">AllInOneVN</span> không chỉ đơn thuần là một dịch vụ mua hộ. Chúng tôi muốn chỉ cần ở nhà và bùm, bạn sẽ có được những thứ bạn cần với chi phín tối ưu.
+                <span className="font-bold text-blue-800 text-xl underline decoration-yellow-400">AllInOneVN</span> không chỉ đơn thuần là một dịch vụ mua hộ. Chúng tôi muốn chỉ cần ở nhà và bùm, bạn sẽ có được những thứ bạn cần với chi phí tối ưu.
               </p>
               <div className="grid md:grid-cols-2 gap-6 pt-6">
                  <div className="p-6 bg-gray-50 rounded-2xl border-l-4 border-blue-500">
