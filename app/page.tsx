@@ -28,12 +28,12 @@ export default function Home() {
     
     {/* Góc trái: Chỉ có Logo */}
     <div className="flex items-center">
-      <img src="/logo.png" alt="Logo" className="h-12 w-auto object-contain" />
+      <img src="/logo.png" alt="Logo" className="h-20 w-auto object-contain" />
     </div>
     
     {/* Góc phải: AllInOneVN và slogan */}
     <div className="flex items-center gap-4">
-      <span className="text-blue-950 font-extrabold text-2xl tracking-tight">AllInOneVN</span>
+      <span className="text-[#337ab7] font-extrabold text-2xl tracking-tight">AllInOneVN</span>
       <div className="h-6 w-[1px] bg-gray-300 hidden md:block"></div>
       <p className="text-blue-700 font-bold hidden md:block uppercase text-[11px] tracking-[0.2em]">
         Tất cả chỉ trong một click
@@ -159,13 +159,20 @@ export default function Home() {
 
         {/* TRANG HOT TREND */}
         {activeTab === 'news' && (
-          <div className="text-center py-20 bg-white rounded-3xl border border-dashed border-gray-300">
-            <div className="text-5xl mb-4">⚡</div>
-            <h2 className="text-3xl font-black text-blue-900 mb-2 uppercase">Hot Trend</h2>
-            <p className="text-gray-500 italic">Hàng ngàn sản phẩm hot trend sẽ được cập nhật tại đây!</p>
-          </div>
-        )}
+  <div className="grid md:grid-cols-3 gap-6">
+    {[1, 2, 3].map((i) => (
+      <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all">
+        <div className="h-48 bg-gray-200 animate-pulse"></div> {/* Thay bằng ảnh sản phẩm thật */}
+        <div className="p-4">
+          <span className="text-red-500 font-bold text-xs uppercase">Đang giảm giá</span>
+          <h4 className="font-bold mt-1 text-blue-900">Sản phẩm Hot Trend {i}</h4>
+          <p className="text-sm text-gray-500 mt-2">Mô tả ngắn gọn về món đồ đang cực hot tại Mỹ/Nhật...</p>
+          <button onClick={() => setActiveTab('home')} className="mt-4 w-full py-2 bg-blue-50 text-blue-600 rounded-lg font-bold text-sm">Gửi yêu cầu mua ngay</button>
+        </div>
       </div>
+    ))}
+  </div>
+)}
 
       {/* FOOTER */}
       <footer className="bg-gray-900 text-white py-14 px-6 mt-20">
