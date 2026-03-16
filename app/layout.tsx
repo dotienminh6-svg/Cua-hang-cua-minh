@@ -1,29 +1,14 @@
-import type { Metadata } from "next";
-import { Nunito } from "next/font/google"; // 1. Import font Nunito
-import "./globals.css";
+import { Nunito } from 'next/font/google';
 
-// 2. Cấu hình font
 const nunito = Nunito({ 
-  subsets: ["latin", "vietnamese"], // Hỗ trợ tiếng Việt
-  variable: "--font-nunito",
+  subsets: ['vietnamese'],
+  weight: ['400', '500', '600', '700', '800', '900'] 
 });
 
-export const metadata: Metadata = {
-  title: "AllInOneVN",
-  description: "Dịch vụ mua hộ hàng quốc tế",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }) {
   return (
     <html lang="vi">
-      {/* 3. Áp dụng font vào thẻ body */}
-      <body className={`${nunito.variable} font-sans antialiased`}>
-        {children}
-      </body>
+      <body className={nunito.className}>{children}</body>
     </html>
   );
 }
