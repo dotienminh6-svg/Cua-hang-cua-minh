@@ -72,11 +72,11 @@ export default function Home() {
                   Mua sắm quốc tế <br/><span className="text-blue-600">Dễ dàng hơn</span>
                 </h2>
                 <div className="text-gray-800 font-medium space-y-4 text-lg leading-relaxed">
-                  <p>AllInOneVN - Giải pháp mua hộ hàng đầu từ Mỹ, Nhật, Hàn, Trung Quốc...</p>
+                  <p>AllInOneVN - Một cho tất cả và tất cả trong một</p>
                   <ul className="space-y-3">
-                    <li className="flex items-center gap-2">✅ Tiết kiệm chi phí vận chuyển</li>
-                    <li className="flex items-center gap-2">✅ Báo giá nhanh trong 5-10 phút</li>
-                    <li className="flex items-center gap-2">✅ Bảo hiểm hàng hóa 100%</li>
+                    <li className="flex items-center gap-2">✅ Tiết kiệm thời gian mua hàng</li>
+                    <li className="flex items-center gap-2">✅ Báo giá nhanh chóng</li>
+                    <li className="flex items-center gap-2">✅ Hàng chuẩn 100%</li>
                   </ul>
                   <div className="pt-4">
                     <button onClick={() => window.scrollTo({top: 500, behavior: 'smooth'})} className="bg-blue-100 text-blue-700 px-6 py-2 rounded-full font-bold text-sm hover:bg-blue-200 transition-colors">
@@ -118,7 +118,7 @@ export default function Home() {
                   <div className="bg-white p-8 rounded-2xl text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                     <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">1</div>
                     <h4 className="font-bold text-lg mb-2">Gửi thông tin</h4>
-                    <p className="text-sm text-gray-500">Bạn chỉ cần gửi link hoặc tên sản phẩm vào form phía trên.</p>
+                    <p className="text-sm text-gray-500">Bạn chỉ cần gửi link, tên sản phẩm hoặc model vào form phía trên.</p>
                   </div>
                   <div className="bg-white p-8 rounded-2xl text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                     <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">2</div>
@@ -128,7 +128,7 @@ export default function Home() {
                   <div className="bg-white p-8 rounded-2xl text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                     <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">3</div>
                     <h4 className="font-bold text-lg mb-2">Nhận hàng</h4>
-                    <p className="text-sm text-gray-500">Hàng về kho Việt Nam sẽ được ship đến tận cửa nhà bạn trong 7-10 ngày.</p>
+                    <p className="text-sm text-gray-500">Nhận hàng, kiểm tra hàng, hoàn hàng nếu không đúng yêu cầu.</p>
                   </div>
                </div>
             </div>
@@ -141,16 +141,16 @@ export default function Home() {
             <h2 className="text-3xl font-black text-blue-900 mb-8 border-b pb-4">VỀ CHÚNG TÔI</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <p>
-                <span className="font-bold text-blue-800 text-xl underline decoration-yellow-400">AllInOneVN</span> không chỉ đơn thuần là một dịch vụ mua hộ. Chúng tôi là người bạn đồng hành giúp bạn tiếp cận nguồn hàng chất lượng từ khắp thế giới một cách an toàn nhất.
+                <span className="font-bold text-blue-800 text-xl underline decoration-yellow-400">AllInOneVN</span> không chỉ đơn thuần là một dịch vụ mua hộ. Chúng tôi muốn chỉ cần ở nhà và bùm, bạn sẽ có được những thứ bạn cần với chi phín tối ưu.
               </p>
               <div className="grid md:grid-cols-2 gap-6 pt-6">
                  <div className="p-6 bg-gray-50 rounded-2xl border-l-4 border-blue-500">
                     <h5 className="font-bold text-blue-700 mb-2">Sứ mệnh</h5>
-                    <p className="text-sm">Xóa bỏ rào cản ngôn ngữ và địa lý, giúp mọi người đều có thể mua hàng hiệu với giá gốc.</p>
+                    <p className="text-sm">Mang đến cho bạn trải nghiệm tối ưu nhất khi chỉ việc ở nhà và mua những thứ mình muốn.</p>
                  </div>
                  <div className="p-6 bg-gray-50 rounded-2xl border-l-4 border-green-500">
                     <h5 className="font-bold text-green-700 mb-2">Giá trị</h5>
-                    <p className="text-sm">Minh bạch trong báo giá, tận tâm trong hỗ trợ và tốc độ trong vận chuyển.</p>
+                    <p className="text-sm">Minh bạch trong báo giá, tận tâm trong hỗ trợ và hài lòng trong sử dụng.</p>
                  </div>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function Home() {
           <div className="text-center py-20 bg-white rounded-3xl border border-dashed border-gray-300">
             <div className="text-5xl mb-4">⚡</div>
             <h2 className="text-3xl font-black text-blue-900 mb-2 uppercase">Hot Trend</h2>
-            <p className="text-gray-500 italic">Hàng ngàn sản phẩm đang sale sập sàn tại Amazon, Rakuten... sẽ cập nhật tại đây!</p>
+            <p className="text-gray-500 italic">Hàng ngàn sản phẩm hot trend sẽ được cập nhật tại đây!</p>
           </div>
         )}
       </div>
