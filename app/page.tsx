@@ -168,23 +168,35 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                {
-                 title: "Robot Hút Bụi Thông Minh",
-                 desc: "Công nghệ lau dọn tự động, điều khiển qua app. Xu hướng nhà thông minh năm nay.",
-                 tag: "Bán chạy nhất",
-                 img: "http://googleusercontent.com/image_collection/image_retrieval/41097842735748199_0"
+                 title: "Thời Trang Mix & Match",
+                 desc: "Các mặt hàng Local Brand chất lượng cao, đồ tập Yoga, và đặc biệt là phong cách "Quiet Luxury" (sang trọng thầm lặng) hoặc "Streetwear Unisex".",
+                 tag: "Xu hướng thời trang",
+                 img: "https://unsplash.com/fr/photos/femme-en-manteau-noir-assise-sur-une-chaise-en-bois-marron-q3Z0R4fgROU"
                },
                {
-                 title: "Sạc Nhanh GaN 100W",
-                 desc: "Siêu nhỏ gọn, sạc được cả Laptop và iPhone. Phụ kiện công nghệ không thể thiếu.",
-                 tag: "Công nghệ mới",
-                 img: "http://googleusercontent.com/image_collection/image_retrieval/11333122969424050341_0"
+                 title: "Mỹ phẩm & Chăm sóc cá nhân",
+                 desc: "Dụng cụ nail thủ công (press-on nails), và các thiết bị chăm sóc da mini tại nhà (máy rửa mặt, máy massage).",
+                 tag: "Skincare",
+                 img: "https://www.google.com/imgres?q=%E1%BA%A2nh%20Concept%20Skincare%20Aesthetic&imgurl=https%3A%2F%2Ftint.creativemarket.com%2Fn5FB40tiOuSCkdlSyWK94UokNgpfOE1xi-OEd6P72oU%2Fwidth%3A1200%2Fheight%3A800%2Fgravity%3Ace%2Frt%3Afill-down%2Fel%3A1%2FczM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzUxMDQvNTEwNDUvNTEwNDU5MjkvOC1iZWF1dHktYW5kLXNraW5jYXJlLW51c2luZXNzLXN0b2NrLWltYWdlLWJ1bmRsZS1vLmpwZyMxNzE5NDMzNjY0%3F1719433664&imgrefurl=https%3A%2F%2Fcreativemarket.com%2Fstudioloire%2F279848219-Skincare-Aesthetic-Stock-Images&docid=qO_2Z7WPaq6AqM&tbnid=TVjo8fkn84OuDM&vet=12ahUKEwiv4KiBiaaTAxVHkVYBHdvcA1QQnPAOegQIZhAB..i&w=1200&h=800&hcb=2&ved=2ahUKEwiv4KiBiaaTAxVHkVYBHdvcA1QQnPAOegQIZhAB"
                },
                {
-                 title: "Vitamin & Thực phẩm chức năng",
-                 desc: "Hàng xách tay chính hãng từ Úc/Mỹ giúp tăng cường sức đề kháng.",
-                 tag: "Sống khỏe",
-                 img: "http://googleusercontent.com/image_collection/image_retrieval/570433318744103132_0"
-               }
+                 title: "Đồ gia dụng & Decor thông minh",
+                 desc: "Những món đồ "vô tri" nhưng tiện ích như đèn LED decor góc làm việc, máy in nhãn mini, kệ nhựa đa năng hoặc các sản phẩm Smart Home giá rẻ.",
+                 tag: "Decor",
+                 img: "https://furaka.vn/thiet-ke-ban-lam-viec-trong-phong-ngu/?srsltid=AfmBOooYuqCsV7oFh3yTHhS6CwAx68KsvxD8RfB8ObW_-NHFjzoIDGti"
+               },
+               {
+                title: "Sản phẩm cho thú cưng",
+                desc: "Các loại hạt dinh dưỡng, quần áo thời trang cho chó mèo và đồ chơi thông minh cho thú cưng.",
+                tag: "Pet care",
+                img: "https://finterior.com.vn/thiet-ke-spa-thu-cung/"
+               },
+               {
+                title: "Thực phẩm "healty" & Đặc sản vùng miền",
+                desc: "Trà Kombucha, bánh ăn kiêng, hạt dinh dưỡng và các sản phẩm đạt chứng nhận OCOP.",
+                tag: "Healthy"
+                img: "https://unsplash.com/fr/photos/verre-a-boire-transparent-wg2xU_UNiVc"
+               },
               ].map((item, i) => (
                 <div key={i} className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100">
                   <div className="h-56 overflow-hidden relative">
