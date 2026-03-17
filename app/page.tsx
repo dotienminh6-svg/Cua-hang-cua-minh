@@ -33,24 +33,24 @@ export default function Home() {
 
     <div className="hidden lg:flex items-center gap-4 flex-grow justify-center">
       <img 
-        src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=400" 
+        src="https://cdn-media.sforum.vn/storage/app/media/wp-content/uploads/2021/07/Mua-ho-hang-hoa-quoc-te.png" 
         className="h-20 w-32 rounded-xl object-cover shadow-md border-2 border-blue-50" 
-        alt="Hàng hóa" 
+        alt="Mua sắm" 
       />
       <img 
-        src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=400" 
+        src="https://cdn.nhandan.vn/images/73dd3adc521635952aeabcf6674a43b030bcd89f7e74208941278b4522a814ae7e9728262103f38c16c75cd2b1296a349db59c87a7c80b5d9bf6604b2fc4a7ee5cfacd5ee898d181029010948d9846a0/ban-hang-online-1-9708.jpg" 
         className="h-20 w-32 rounded-xl object-cover shadow-md border-2 border-blue-50" 
-        alt="Vận chuyển" 
+        alt="Tiện ích" 
       />
       <img 
-        src="https://images.unsplash.com/photo-1512418490979-92798ccc1380?q=80&w=400"
+        src="https://image.voh.com.vn/voh/Image/2023/09/26/cach-tang-uy-tin-trong-lien-quan-1.jpg?t=o"
         className="h-20 w-32 rounded-lg object-cover shadow-sm" 
-        alt="Kiểm hàng"
+        alt="Uy tín"
       />
       <img
-        src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=400"
-        className="h-10 w-16 rounded-lg object-cover shadow-sm" 
-        alt="Thanh toán"
+        src="http://img.spiderum.com/sp-images/e5275d20f66911e6b99be3ec1fb4e2d8.jpg"
+        className="h-20 w-32 rounded-lg object-cover shadow-sm" 
+        alt="Nhanh chóng"
         />
     </div>
     
