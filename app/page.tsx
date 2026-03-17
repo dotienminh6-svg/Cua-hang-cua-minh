@@ -30,6 +30,13 @@ export default function Home() {
     <div className="flex items-center">
       <img src="/logo.png" alt="Logo" className="h-20 w-auto object-contain" />
     </div>
+
+    <div className="hidden lg:flex items-center gap-2 flex-grow justify-center px-4">
+    <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=200" className="h-10 w-16 rounded-lg object-cover shadow-sm" alt="Hàng hóa" />
+    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=200" className="h-10 w-16 rounded-lg object-cover shadow-sm" alt="Vận chuyển" />
+    <img src="https://images.unsplash.com/photo-1512418490979-92798ccc1380?q=80&w=200" className="h-10 w-16 rounded-lg object-cover shadow-sm" alt="Kiểm hàng" />
+    <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=200" className="h-10 w-16 rounded-lg object-cover shadow-sm" alt="Thanh toán" />
+  </div>
     
     {/* Góc phải: AllInOneVN và slogan */}
     <div className="flex items-center gap-4">
@@ -42,20 +49,6 @@ export default function Home() {
     
   </div>
 </header>
-
-<div className="bg-white py-10 border-b border-gray-100">
-  <div className="max-w-7xl mx-auto px-6">
-    <h3 className="text-xl font-bold text-center mb-8 text-gray-400 uppercase tracking-[0.3em]">
-      Khoảnh khắc mua sắm
-    </h3>
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=500" className="rounded-2xl h-40 w-full object-cover shadow-sm" alt="Hàng hóa" />
-      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=500" className="rounded-2xl h-40 w-full object-cover shadow-sm" alt="Vận chuyển" />
-      <img src="https://images.unsplash.com/photo-1512418490979-92798ccc1380?q=80&w=500" className="rounded-2xl h-40 w-full object-cover shadow-sm" alt="Kiểm hàng" />
-      <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=500" className="rounded-2xl h-40 w-full object-cover shadow-sm" alt="Thanh toán" />
-    </div>
-  </div>
-</div>
 
       {/* MENU */}
       <nav className="bg-[#337ab7] text-white sticky top-0 z-50 shadow-md">
