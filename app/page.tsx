@@ -11,7 +11,7 @@ export default function Home() {
     setLoading(true);
     emailjs.sendForm('service_u39jdqg', 'template_rhrihtn', e.target, 'lTdh8-6gnfkeO7kfJ')
       .then(() => {
-        alert("Đã gửi đơn hàng thành công! Đợi chút Minh sẽ check và báo giá bạn ngay.");
+        alert("Đã gửi đơn hàng thành công! Đợi chút mình sẽ check và báo giá bạn ngay.");
         setLoading(false);
         e.target.reset();
       }, (error) => {
@@ -69,7 +69,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-start">
               <div>
                 <h2 className="text-5xl font-black text-blue-900 mb-6 uppercase leading-tight">
-                  Mua sắm quốc tế <br/><span className="text-blue-600">Dễ dàng hơn</span>
+                  Mua những gì bạn muốn <br/><span className="text-blue-600">Dễ dàng hơn</span>
                 </h2>
                 <div className="text-gray-800 font-medium space-y-4 text-lg leading-relaxed">
                   <p>AllInOneVN - Một cho tất cả và tất cả trong một</p>
@@ -159,20 +159,52 @@ export default function Home() {
 
         {/* TRANG HOT TREND */}
         {activeTab === 'news' && (
-          <div className="grid md:grid-cols-3 gap-6">
-             {[1, 2, 3].map((i) => (
-               <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all">
-                 <div className="h-48 bg-gray-200 animate-pulse"></div> {/* Thay bằng ảnh sản phẩm thật */}
-                 <div className="p-4">
-                   <span className="text-red-500 font-bold text-xs uppercase">Đang giảm giá</span>
-                   <h4 className="font-bold mt-1 text-blue-900">Sản phẩm Hot Trend {i}</h4>
-                   <p className="text-sm text-gray-500 mt-2">Mô tả ngắn gọn về món đồ đang cực hot tại Mỹ/Nhật...</p>
-                   <button onClick={() => setActiveTab('home')} className="mt-4 w-full py-2 bg-blue-50 text-blue-600 rounded-lg font-bold text-sm">Gửi yêu cầu mua ngay</button>
-                 </div>
-               </div>
-             ))}
-           </div>
-         )}
+          <div className="space-y-10">
+            <div className="text-center">
+              <h2 className="text-3xl font-black text-blue-900 uppercase">Xu hướng tiêu dùng 2026</h2>
+              <p className="text-gray-500">Những sản phẩm được săn đón nhất tại thị trường Việt Nam</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+               {
+                 title: "Robot Hút Bụi Thông Minh",
+                 desc: "Công nghệ lau dọn tự động, điều khiển qua app. Xu hướng nhà thông minh năm nay.",
+                 tag: "Bán chạy nhất",
+                 img: "http://googleusercontent.com/image_collection/image_retrieval/41097842735748199_0"
+               },
+               {
+                 title: "Sạc Nhanh GaN 100W",
+                 desc: "Siêu nhỏ gọn, sạc được cả Laptop và iPhone. Phụ kiện công nghệ không thể thiếu.",
+                 tag: "Công nghệ mới",
+                 img: "http://googleusercontent.com/image_collection/image_retrieval/11333122969424050341_0"
+               },
+               {
+                 title: "Vitamin & Thực phẩm chức năng",
+                 desc: "Hàng xách tay chính hãng từ Úc/Mỹ giúp tăng cường sức đề kháng.",
+                 tag: "Sống khỏe",
+                 img: "http://googleusercontent.com/image_collection/image_retrieval/570433318744103132_0"
+               }
+              ].map((item, i) => (
+                <div key={i} className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100">
+                  <div className="h-56 overflow-hidden relative">
+                    <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">
+                      {item.tag}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h4 className="font-bold text-xl text-blue-900 mb-2">{item.title}</h4>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-4">{item.desc}</p>
+                    <button onClick={() => setActiveTab('home')} className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
+                      Nhận báo giá ngay
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
        </div> {/* <-- DÒNG NÀY BỊ THIẾU TRONG CODE CŨ CỦA BẠN */}
 
       {/* FOOTER */}
