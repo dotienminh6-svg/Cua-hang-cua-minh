@@ -198,20 +198,27 @@ export default function Home() {
                 img: "https://images.unsplash.com/photo-1567769541495-338ee7203e3c?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                },
               ].map((item, i) => (
-                <div key={i} className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                  <div className="h-56 overflow-hidden relative">
+                <div key={i} className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col"> {/* THÊM flex flex-col Ở ĐÂY */}
+    
+                  <div className="h-56 overflow-hidden relative flex-shrink-0">
                     <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">
                       {item.tag}
                     </div>
                   </div>
-                  <div className="p-6">
-                    <h4 className="font-bold text-xl text-blue-900 mb-2">{item.title}</h4>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-4">{item.desc}</p>
-                    <button onClick={() => setActiveTab('home')} className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
-                      Nhận báo giá ngay
-                    </button>
-                  </div>
+
+                   <div className="p-6 flex flex-col flex-grow"> {/* THÊM flex flex-col flex-grow Ở ĐÂY */}
+                     <h4 className="font-bold text-xl text-blue-900 mb-2">{item.title}</h4>
+                     <p className="text-gray-500 text-sm leading-relaxed mb-6">{item.desc}</p>
+      
+                     {/* THÊM mt-auto VÀO CLASS CỦA BUTTON */}
+                     <button 
+                       onClick={() => setActiveTab('home')} 
+                       className="mt-auto w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200"
+                     >
+                       Nhận báo giá ngay
+                     </button>
+                   </div>
                 </div>
               ))}
             </div>
