@@ -28,15 +28,21 @@ export default function Home() {
     
     {/* Góc trái: Chỉ có Logo */}
     <div className="flex items-center">
-      <img src="/logo.png" alt="Logo" className="h-20 w-auto object-contain" />
+      <img src="/logo.png" alt="Logo" className="h-20 w-auto object-contain transition-transform hover:scale-105" />
     </div>
 
-    <div className="hidden lg:flex items-center gap-2 flex-grow justify-center px-4">
-    <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=200" className="h-10 w-16 rounded-lg object-cover shadow-sm" alt="Hàng hóa" />
-    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=200" className="h-10 w-16 rounded-lg object-cover shadow-sm" alt="Vận chuyển" />
-    <img src="https://images.unsplash.com/photo-1512418490979-92798ccc1380?q=80&w=200" className="h-10 w-16 rounded-lg object-cover shadow-sm" alt="Kiểm hàng" />
-    <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=200" className="h-10 w-16 rounded-lg object-cover shadow-sm" alt="Thanh toán" />
-  </div>
+    <div className="hidden lg:flex items-center gap-4 flex-grow justify-center">
+      <img 
+        src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=400" 
+        className="h-20 w-32 rounded-xl object-cover shadow-md border-2 border-blue-50" 
+        alt="Hàng hóa" 
+      />
+      <img 
+        src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=400" 
+        className="h-20 w-32 rounded-xl object-cover shadow-md border-2 border-blue-50" 
+        alt="Vận chuyển" 
+      />
+    </div>
     
     {/* Góc phải: AllInOneVN và slogan */}
     <div className="flex items-center gap-4">
