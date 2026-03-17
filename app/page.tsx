@@ -132,6 +132,15 @@ export default function Home() {
                   </div>
                </div>
             </div>
+            <div className="pt-20 border-t border-gray-100">
+              <h3 className="text-xl font-bold text-center mb-8 text-gray-400 uppercase tracking-[0.3em]">Khoảnh khắc mua sắm</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=500" className="rounded-2xl h-40 w-full object-cover shadow-sm" alt="Hàng hóa" />
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=500" className="rounded-2xl h-40 w-full object-cover shadow-sm" alt="Vận chuyển" />
+                <img src="https://images.unsplash.com/photo-1512418490979-92798ccc1380?q=80&w=500" className="rounded-2xl h-40 w-full object-cover shadow-sm" alt="Kiểm hàng" />
+                <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=500" className="rounded-2xl h-40 w-full object-cover shadow-sm" alt="Thanh toán" />
+              </div>
+            </div>
           </div>
         )}
 
