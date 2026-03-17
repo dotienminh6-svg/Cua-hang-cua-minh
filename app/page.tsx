@@ -102,7 +102,7 @@ export default function Home() {
                   </div>
                   <div>
                     <label className="block font-bold mb-1 text-gray-700 text-sm">Số điện thoại Zalo</label>
-                    <input name="phone" className="w-full border border-gray-300 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="Để Minh báo giá cho bạn..." required />
+                    <input name="phone" className="w-full border border-gray-300 p-3 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="Để AIOVN báo giá cho bạn..." required />
                   </div>
                   <button type="submit" className="w-full bg-[#337ab7] text-white p-4 font-bold uppercase rounded-xl hover:bg-blue-800 shadow-lg transform active:scale-95 transition-all">
                     {loading ? "Đang gửi đi..." : "Gửi yêu cầu ngay"}
@@ -141,7 +141,7 @@ export default function Home() {
             <h2 className="text-3xl font-black text-blue-900 mb-8 border-b pb-4">VỀ CHÚNG TÔI</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
               <p>
-                <span className="font-bold text-blue-800 text-xl underline decoration-yellow-400">AllInOneVN</span> không chỉ đơn thuần là một dịch vụ mua hộ. Chúng tôi muốn chỉ cần ở nhà và bùm, bạn sẽ có được những thứ bạn cần với chi phí tối ưu.
+                <span className="font-bold text-blue-800 text-xl underline decoration-yellow-400">AllInOneVN</span> không chỉ đơn thuần là một dịch vụ mua hộ. Chúng tôi muốn chỉ cần ở nhà hoặc bất kỳ đâu, bạn cũng sẽ có được những thứ bạn cần với chi phí tối ưu.
               </p>
               <div className="grid md:grid-cols-2 gap-6 pt-6">
                  <div className="p-6 bg-gray-50 rounded-2xl border-l-4 border-blue-500">
@@ -150,7 +150,7 @@ export default function Home() {
                  </div>
                  <div className="p-6 bg-gray-50 rounded-2xl border-l-4 border-green-500">
                     <h5 className="font-bold text-green-700 mb-2">Giá trị</h5>
-                    <p className="text-sm">Minh bạch trong báo giá, tận tâm trong hỗ trợ và hài lòng trong sử dụng.</p>
+                    <p className="text-sm">Minh bạch trong báo giá, tận tâm trong hỗ trợ, hết mình trong tư vấn và hài lòng trong sử dụng.</p>
                  </div>
               </div>
             </div>
@@ -216,7 +216,7 @@ export default function Home() {
                        onClick={() => setActiveTab('home')} 
                        className="mt-auto w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200"
                      >
-                       Nhận báo giá ngay
+                       Nhận thông tin tư vấn
                      </button>
                    </div>
                 </div>
