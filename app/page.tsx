@@ -28,7 +28,7 @@ export default function Home() {
     
     {/* Góc trái: Chỉ có Logo */}
     <div className="flex items-center">
-      <img src="/logo.png" alt="Logo" className="h-30 w-auto object-contain transition-transform hover:scale-105" />
+      <img src="/logo.png" alt="Logo" className="h-32 w-auto object-contain transition-transform hover:scale-105" />
     </div>
 
     <div className="hidden lg:flex items-center gap-4 flex-grow justify-center">
