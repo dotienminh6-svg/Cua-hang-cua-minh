@@ -1,14 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 255, 255, 255;
+/* Cấu hình màu sắc tùy chỉnh cho Tailwind v4 */
+@theme {
+  --color-aio-blue: #1e40af;
+  --color-aio-green: #84cc16;
+  --color-aio-bg: #f8fafc;
 }
 
+/* Ép buộc nền trắng và chữ đen */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: white !important; /* Ép buộc luôn là nền trắng */
+  background-color: white !important;
+  color: black;
 }
