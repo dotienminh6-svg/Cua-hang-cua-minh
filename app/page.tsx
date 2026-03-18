@@ -254,16 +254,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
           {/* Cột 1: Giới thiệu */}
           <div>
-            <h4 className="text-aio-blue font-bold text-lg mb-4">AllInOneVN</h4>
-            <p className="text-gray-400 text-sm leading-relaxed">
+            <h4 className="text-white font-black text-2xl mb-5 tracking-tight">AllInOneVN</h4>
+            <p className="text-white text-sm leading-relaxed">
               Giải pháp mua sắm trực tuyến. Chúng tôi giúp bạn kết nối với nguồn hàng uy tín từ khắp nơi chỉ với một cú click.
             </p>
           </div>
     
           {/* Cột 2: Liên hệ */}
           <div>
-            <h4 className="text-aio-blue font-bold text-lg mb-4">Liên hệ</h4>
-            <ul className="text-gray-400 text-sm space-y-2">
+            <h4 className="text-white font-black text-2xl mb-5 tracking-tight">Liên hệ</h4>
+            <ul className="text-white text-sm space-y-3">
               <li>📍 Hà Nội: [Trung Kính, Trung Hòa, Cầu Giấy, Hà Nội]</li>
               <li>📍 Quảng Ninh: [Tổ 23, Khu 2B, Hà Tu, Quảng Ninh]</li>
               <li>📞 Hotline: 0782059679</li>
