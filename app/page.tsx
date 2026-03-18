@@ -250,12 +250,12 @@ export default function Home() {
        </div> {/* <-- DÒNG NÀY BỊ THIẾU TRONG CODE CŨ CỦA BẠN */}
 
       {/* FOOTER */}
-      <footer className="bg-white border-t border-gray-100 pt-16 pb-8">
+      <footer className="bg-black border-t border-gray-800 pt-16 pb-8 text-white">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
           {/* Cột 1: Giới thiệu */}
           <div>
             <h4 className="text-aio-blue font-bold text-lg mb-4">AllInOneVN</h4>
-            <p className="text-gray-500 text-sm leading-relaxed">
+            <p className="text-gray-400 text-sm leading-relaxed">
               Giải pháp mua sắm trực tuyến. Chúng tôi giúp bạn kết nối với nguồn hàng uy tín từ khắp nơi chỉ với một cú click.
             </p>
           </div>
@@ -263,14 +263,14 @@ export default function Home() {
           {/* Cột 2: Liên hệ */}
           <div>
             <h4 className="text-aio-blue font-bold text-lg mb-4">Liên hệ</h4>
-            <ul className="text-gray-500 text-sm space-y-2">
+            <ul className="text-gray-400 text-sm space-y-2">
               <li>📍 Hà Nội: [Trung Kính, Trung Hòa, Cầu Giấy, Hà Nội]</li>
               <li>📍 Quảng Ninh: [Tổ 23, Khu 2B, Hà Tu, Quảng Ninh]</li>
               <li>📞 Hotline: 0782059679</li>
             </ul>
           </div>
         </div>
-        <div className="text-center mt-16 pt-8 border-t border-gray-50 text-gray-400 text-xs">
+        <div className="text-center mt-16 pt-8 border-t border-gray-800 text-gray-500 text-xs">
           © 2026 AllInOneVN.
        </div>
      </footer>
