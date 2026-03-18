@@ -21,7 +21,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 font-sans text-gray-900 relative">
+    <main className="min-h-screen bg-aio-bg font-sans text-gray-900 relative">
       {/* HEADER */}
 <header className="bg-white py-4 px-6 border-b border-gray-100 shadow-sm">
   <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -56,9 +56,9 @@ export default function Home() {
     
     {/* Góc phải: AllInOneVN và slogan */}
     <div className="flex items-center gap-4">
-      <span className="text-[#337ab7] font-extrabold text-2xl tracking-tight">AllInOneVN</span>
+      <span className="text-aio-blue font-extrabold text-2xl tracking-tight">AllInOneVN</span>
       <div className="h-6 w-[1px] bg-gray-300 hidden md:block"></div>
-      <p className="text-blue-700 font-bold hidden md:block uppercase text-[11px] tracking-[0.2em]">
+      <p className="text-aio-blue font-bold hidden md:block uppercase text-[11px] tracking-[0.2em]">
         Tất cả chỉ trong một click
       </p>
     </div>
@@ -250,20 +250,30 @@ export default function Home() {
        </div> {/* <-- DÒNG NÀY BỊ THIẾU TRONG CODE CŨ CỦA BẠN */}
 
       {/* FOOTER */}
-      <footer className="bg-gray-900 text-white py-14 px-6 mt-20">
-        <div className="max-w-7xl mx-auto flex flex-col items-center space-y-6">
-          <div className="text-2xl font-black tracking-tighter italic">AllInOneVN</div>
-          <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400 uppercase font-bold tracking-widest">
-            <span>📞 0782059679</span>
-            <span>📍 Hà Nội - Quảng Ninh</span>
+      <footer className="bg-white border-t border-gray-100 pt-16 pb-8">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+          {/* Cột 1: Giới thiệu */}
+          <div>
+            <h4 className="text-aio-blue font-bold text-lg mb-4">AllInOneVN</h4>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              Giải pháp mua sắm trực tuyến. Chúng tôi giúp bạn kết nối với nguồn hàng uy tín từ khắp nơi chỉ với một cú click.
+            </p>
           </div>
-          <a href="https://www.facebook.com/LilM1905" target="_blank" className="bg-blue-600 px-6 py-2 rounded-full font-bold hover:bg-blue-500 transition-colors">
-            Follow Fanpage
-          </a>
-          <p className="text-gray-600 text-[10px] pt-10">© 2026 AllInOneVN. Created by Do Tien Minh.</p>
+    
+          {/* Cột 2: Liên hệ */}
+          <div>
+            <h4 className="text-aio-blue font-bold text-lg mb-4">Liên hệ</h4>
+            <ul className="text-gray-500 text-sm space-y-2">
+              <li>📍 Hà Nội: [Trung Kính, Trung Hòa, Cầu Giấy, Hà Nội]</li>
+              <li>📍 Quảng Ninh: [Tổ 23, Khu 2B, Hà Tu, Quảng Ninh]</li>
+              <li>📞 Hotline: 0782059679</li>
+            </ul>
+          </div>
         </div>
-      </footer>
-
+        <div className="text-center mt-16 pt-8 border-t border-gray-50 text-gray-400 text-xs">
+          © 2026 AllInOneVN.
+       </div>
+     </footer>
       {/* ZALO BUTTON */}
       <a 
         href="https://zalo.me/0782059679" 
