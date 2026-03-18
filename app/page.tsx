@@ -32,9 +32,11 @@ export default function Home() {
       <img src="/logo.png" alt="Logo" className="h-32 w-auto object-contain transition-transform hover:scale-105" />
     </div>
 
-    <div className="hidden lghidden lg:flex items-center justify-center flex-grow">
-      <div className="w-32 h-20 overflow-hidden rounded-lg shadow-sm border border-gray-100"></div>
+    {/* PHẦN GIỮA: Banner nhỏ gọn w-32 h-20 */}
+    <div className="hidden lg:flex items-center justify-center flex-grow">
+      <div className="w-32 h-20 overflow-hidden rounded-lg bg-gray-50 border border-gray-100">
         <BannerCarousel />
+      </div>
     </div>
     
     {/* Góc phải: AllInOneVN và slogan */}
