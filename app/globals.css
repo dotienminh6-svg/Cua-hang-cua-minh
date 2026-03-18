@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Nếu muốn chắc chắn không bao giờ bị đen, Minh thêm dòng này: */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+}
+
 body {
-  background: white;
-  color: black;
+  color: rgb(var(--foreground-rgb));
+  background: white !important; /* Ép buộc luôn là nền trắng */
 }
