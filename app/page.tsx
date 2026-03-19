@@ -20,11 +20,21 @@ function HomeContent() {
       setActiveTab('news'); // Tự động mở tab Hot Trend
       
       setTimeout(() => {
-        const element = document.getElementById('hot-trend-section');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+        // Kiểm tra xem trình duyệt có nhớ vị trí cũ không
+        const savedScroll = sessionStorage.getItem('homeScrollY');
+        
+        if (savedScroll) {
+          // Nếu có, nhảy ngay lập tức đến vị trí đó
+          window.scrollTo({ top: parseInt(savedScroll), behavior: 'auto' });
+          sessionStorage.removeItem('homeScrollY'); // Xóa đi để không bị lỗi cho các lần sau
+        } else {
+          // Nếu không (vào lần đầu), cuộn xuống phần Hot Trend như bình thường
+          const element = document.getElementById('hot-trend-section');
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
         }
-      }, 100); 
+      }, 100); // Đợi 100ms để React vẽ xong giao diện rồi mới nhảy
     }
   }, [tab]);
 
@@ -235,7 +245,10 @@ function HomeContent() {
                 <div key={i} className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col">
           
                   {/* PHẦN 1: ẢNH VÀ THÔNG TIN ĐƯỢC BỌC BỞI LINK */}
-                  <Link href={`/san-pham/${item.slug}`} className="flex flex-col flex-grow cursor-pointer">
+                  <Link 
+                    href={`/san-pham/${item.slug}`} 
+                    onClick={() => sessionStorage.setItem('homeScrollY', window.scrollY.toString())}
+                    className="flex flex-col flex-grow cursor-pointer">
                     <div className="h-56 overflow-hidden relative flex-shrink-0">
                       <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                       <div className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">

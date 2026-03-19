@@ -4,7 +4,7 @@ export default function ThucPhamHealthy() {
   return (
     <div className="max-w-5xl mx-auto py-12 px-6">
       <Link href="/?tab=news" className="inline-flex items-center text-blue-600 font-bold mb-8 hover:text-blue-800 transition-colors">
-        ← Quay lại trang chủ
+        ← Quay lại
       </Link>
       <div className="grid md:grid-cols-2 gap-10">
         <div className="rounded-2xl overflow-hidden shadow-xl h-[400px]">
