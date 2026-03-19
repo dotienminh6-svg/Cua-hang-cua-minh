@@ -5,6 +5,7 @@ import emailjs from '@emailjs/browser';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
+import { Suspense } from 'react'; // 1. Thêm import này
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -17,11 +18,12 @@ export default function Home() {
     if (tab === 'news') {
       setActiveTab('news'); // Tự động mở tab Hot Trend
       
-      // Mẹo nhỏ: Cuộn xuống đúng phần nội dung để khách không phải kéo chuột
-      const element = document.getElementById('hot-trend-section');
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      setTimeout(() => {
+        const element = document.getElementById('hot-trend-section');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100); 
     }
   }, [tab]);
 
@@ -40,7 +42,8 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-aio-bg font-sans text-gray-900 relative">
+    <Suspense fallback={<div>Đang tải...</div>}>
+       <main className="min-h-screen bg-aio-bg font-sans text-gray-900 relative">
 {/* HEADER */}
 <header className="bg-white py-4 px-6 border-b border-gray-100 shadow-sm">
   <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
@@ -317,5 +320,6 @@ export default function Home() {
         </div>
       </a>
     </main>
+  </Suspense>
   );
 }
