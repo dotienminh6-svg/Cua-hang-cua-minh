@@ -1,13 +1,14 @@
 "use client";
 import { BannerCarousel } from '../components/BannerCarousel';
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import emailjs from '@emailjs/browser';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
-import { Suspense } from 'react'; // 1. Thêm import này
 
-export default function Home() {
+// ==========================================
+// COMPONENT CON: CHỨA TOÀN BỘ LOGIC VÀ GIAO DIỆN
+// ==========================================
+function HomeContent() {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
 
@@ -42,48 +43,47 @@ export default function Home() {
   };
 
   return (
-    <Suspense fallback={<div>Đang tải...</div>}>
-       <main className="min-h-screen bg-aio-bg font-sans text-gray-900 relative">
-{/* HEADER */}
-<header className="bg-white py-4 px-6 border-b border-gray-100 shadow-sm">
-  <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-    
-    {/* Góc trái: Chỉ có Logo */}
-    <div className="flex items-center">
-      <img src="/logo.png" alt="Logo" className="h-32 w-auto object-contain transition-transform hover:scale-105" />
-    </div>
+    <main className="min-h-screen bg-aio-bg font-sans text-gray-900 relative">
+      {/* HEADER */}
+      <header className="bg-white py-4 px-6 border-b border-gray-100 shadow-sm">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          
+          {/* Góc trái: Chỉ có Logo */}
+          <div className="flex items-center">
+            <img src="/logo.png" alt="Logo" className="h-32 w-auto object-contain transition-transform hover:scale-105" />
+          </div>
 
-    {/* PHẦN GIỮA: Banner rộng hơn để hiện 3 ảnh chạy cùng lúc */}
-    <div className="hidden lg:flex items-center justify-center flex-1 max-w-2xl mx-8">
-      <div className="w-full h-24 overflow-hidden rounded-xl bg-gray-50 shadow-inner">
-        <BannerCarousel />
-      </div>
-    </div>
-    
-    {/* Góc phải: AllInOneVN và slogan */}
-    <div className="flex items-center gap-4">
-      <span className="text-aio-blue font-extrabold text-2xl tracking-tight">AllInOneVN</span>
-      <div className="h-6 w-[1px] bg-gray-300 hidden md:block"></div>
-      <p className="text-aio-blue font-bold hidden md:block uppercase text-[11px] tracking-[0.2em]">
-        Tất cả chỉ trong một click
-      </p>
-    </div>
-    
-  </div>
-</header>
+          {/* PHẦN GIỮA: Banner rộng hơn để hiện 3 ảnh chạy cùng lúc */}
+          <div className="hidden lg:flex items-center justify-center flex-1 max-w-2xl mx-8">
+            <div className="w-full h-24 overflow-hidden rounded-xl bg-gray-50 shadow-inner">
+              <BannerCarousel />
+            </div>
+          </div>
+          
+          {/* Góc phải: AllInOneVN và slogan */}
+          <div className="flex items-center gap-4">
+            <span className="text-aio-blue font-extrabold text-2xl tracking-tight">AllInOneVN</span>
+            <div className="h-6 w-[1px] bg-gray-300 hidden md:block"></div>
+            <p className="text-aio-blue font-bold hidden md:block uppercase text-[11px] tracking-[0.2em]">
+              Tất cả chỉ trong một click
+            </p>
+          </div>
+          
+        </div>
+      </header>
 
       {/* MENU */}
       <nav className="bg-[#337ab7] text-white sticky top-0 z-50 shadow-md">
         <div className="max-w-7xl mx-auto flex overflow-x-auto scrollbar-hide">
-          {['home', 'about', 'news'].map((tab) => (
+          {['home', 'about', 'news'].map((tabItem) => (
             <button 
-              key={tab}
-              onClick={() => setActiveTab(tab)}
+              key={tabItem}
+              onClick={() => setActiveTab(tabItem)}
               className={`px-8 py-4 font-bold uppercase text-xs tracking-widest transition-all whitespace-nowrap ${
-                activeTab === tab ? 'bg-[#23527c] border-b-4 border-yellow-400' : 'hover:bg-[#286090]'
+                activeTab === tabItem ? 'bg-[#23527c] border-b-4 border-yellow-400' : 'hover:bg-[#286090]'
               }`}
             >
-              {tab === 'home' ? 'Trang chủ' : tab === 'about' ? 'Giới thiệu' : 'Hot trend'}
+              {tabItem === 'home' ? 'Trang chủ' : tabItem === 'about' ? 'Giới thiệu' : 'Hot trend'}
             </button>
           ))}
         </div>
@@ -188,7 +188,7 @@ export default function Home() {
 
         {/* TRANG HOT TREND */}
         {activeTab === 'news' && (
-          <div className="space-y-10">
+          <div id="hot-trend-section" className="space-y-10"> {/* Đã thêm ID vào đây */}
             <div className="text-center">
               <h2 className="text-3xl font-black text-blue-900 uppercase">Xu hướng tiêu dùng 2026</h2>
               <p className="text-gray-500">Những sản phẩm được săn đón nhất tại thị trường Việt Nam</p>
@@ -201,35 +201,35 @@ export default function Home() {
                   desc: "Các mặt hàng Local Brand chất lượng cao, đồ tập Yoga, và đặc biệt là phong cách Quiet Luxury (sang trọng thầm lặng) hoặc Streetwear Unisex.",
                   tag: "Xu hướng thời trang",
                   img: "https://images.unsplash.com/photo-1613728455120-d00493b5e77e?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                  slug: "thoi-trang-mix-match" // <--- THÊM DÒNG NÀY ĐỂ TẠO LINK
+                  slug: "thoi-trang-mix-match"
                 },
                 {
                   title: "Mỹ phẩm & Chăm sóc cá nhân",
                   desc: "Dụng cụ nail thủ công (press-on nails), và các thiết bị chăm sóc da mini tại nhà (máy rửa mặt, máy massage).",
                   tag: "Skincare",
                   img: "https://tint.creativemarket.com/n5FB40tiOuSCkdlSyWK94UokNgpfOE1xi-OEd6P72oU/width:1200/height:800/gravity:ce/rt:fill-down/el:1/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzUxMDQvNTEwNDUvNTEwNDU5MjkvOC1iZWF1dHktYW5kLXNraW5jYXJlLW51c2luZXNzLXN0b2NrLWltYWdlLWJ1bmRsZS1vLmpwZyMxNzE5NDMzNjY0?1719433664",
-                  slug: "my-pham-cham-soc" // <--- THÊM DÒNG NÀY ĐỂ TẠO LINK
+                  slug: "my-pham-cham-soc"
                 },
                 {
                   title: "Đồ gia dụng & Decor thông minh",
                   desc: "Những món đồ (vô tri) nhưng tiện ích như đèn LED decor góc làm việc, máy in nhãn mini, kệ nhựa đa năng hoặc các sản phẩm Smart Home giá rẻ.",
                   tag: "Decor",
                   img: "https://furaka.vn/wp-content/uploads/2024/09/Thiet-ke-ban-lam-viec-gan-tuong-1.jpg",
-                  slug: "do-gia-dung-decor" // <--- THÊM DÒNG NÀY ĐỂ TẠO LINK
+                  slug: "do-gia-dung-decor"
                 },
                 {
                   title: "Sản phẩm cho thú cưng",
                   desc: "Các loại hạt dinh dưỡng, quần áo thời trang cho chó mèo và đồ chơi thông minh cho thú cưng.",
                   tag: "Pet care",
                   img: "https://finterior.com.vn/wp-content/uploads/2024/07/mau-thiet-ke-spa-thu-cung.jpg",
-                  slug: "san-pham-thu-cung" // <--- THÊM DÒNG NÀY ĐỂ TẠO LINK
+                  slug: "san-pham-thu-cung"
                 },
                 {
                   title: "Thực phẩm healty & Đặc sản vùng miền",
                   desc: "Trà Kombucha, bánh ăn kiêng, hạt dinh dưỡng và các sản phẩm đạt chứng nhận OCOP.",
                   tag: "Healthy",
                   img: "https://images.unsplash.com/photo-1567769541495-338ee7203e3c?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                  slug: "thuc-pham-healthy" // <--- THÊM DÒNG NÀY ĐỂ TẠO LINK
+                  slug: "thuc-pham-healthy"
                 },
               ].map((item, i) => (
                 <div key={i} className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col">
@@ -264,7 +264,7 @@ export default function Home() {
             </div>
           </div>
         )}
-       </div> {/* <-- DÒNG NÀY BỊ THIẾU TRONG CODE CŨ CỦA BẠN */}
+       </div> 
 
       {/* FOOTER */}
       <footer className="bg-black border-t border-gray-800 pt-16 pb-8 text-white">
@@ -305,7 +305,7 @@ export default function Home() {
         <div className="text-center mt-16 pt-8 border-t border-gray-800 text-gray-500 text-xs">
           © 2026 AllInOneVN.
        </div>
-     </footer>
+      </footer>
       {/* ZALO BUTTON */}
       <a 
         href="https://zalo.me/0782059679" 
@@ -320,6 +320,20 @@ export default function Home() {
         </div>
       </a>
     </main>
-  </Suspense>
+  );
+}
+
+// ==========================================
+// COMPONENT CHÍNH: CHỈ ĐỂ BỌC SUSPENSE
+// ==========================================
+export default function Home() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center text-blue-900 font-bold">
+        Đang tải dữ liệu...
+      </div>
+    }>
+      <HomeContent />
+    </Suspense>
   );
 }
