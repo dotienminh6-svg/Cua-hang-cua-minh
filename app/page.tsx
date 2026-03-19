@@ -2,6 +2,7 @@
 import { BannerCarousel } from '../components/BannerCarousel';
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import Link from 'next/link';
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -175,58 +176,69 @@ export default function Home() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
-               {
-                 title: "Thời Trang Mix & Match",
-                 desc: "Các mặt hàng Local Brand chất lượng cao, đồ tập Yoga, và đặc biệt là phong cách Quiet Luxury (sang trọng thầm lặng) hoặc Streetwear Unisex.",
-                 tag: "Xu hướng thời trang",
-                 img: "https://images.unsplash.com/photo-1613728455120-d00493b5e77e?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-               },
-               {
-                 title: "Mỹ phẩm & Chăm sóc cá nhân",
-                 desc: "Dụng cụ nail thủ công (press-on nails), và các thiết bị chăm sóc da mini tại nhà (máy rửa mặt, máy massage).",
-                 tag: "Skincare",
-                 img: "https://tint.creativemarket.com/n5FB40tiOuSCkdlSyWK94UokNgpfOE1xi-OEd6P72oU/width:1200/height:800/gravity:ce/rt:fill-down/el:1/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzUxMDQvNTEwNDUvNTEwNDU5MjkvOC1iZWF1dHktYW5kLXNraW5jYXJlLW51c2luZXNzLXN0b2NrLWltYWdlLWJ1bmRsZS1vLmpwZyMxNzE5NDMzNjY0?1719433664"
-               },
-               {
-                 title: "Đồ gia dụng & Decor thông minh",
-                 desc: "Những món đồ (vô tri) nhưng tiện ích như đèn LED decor góc làm việc, máy in nhãn mini, kệ nhựa đa năng hoặc các sản phẩm Smart Home giá rẻ.",
-                 tag: "Decor",
-                 img: "https://furaka.vn/wp-content/uploads/2024/09/Thiet-ke-ban-lam-viec-gan-tuong-1.jpg"
-               },
-               {
-                title: "Sản phẩm cho thú cưng",
-                desc: "Các loại hạt dinh dưỡng, quần áo thời trang cho chó mèo và đồ chơi thông minh cho thú cưng.",
-                tag: "Pet care",
-                img: "https://finterior.com.vn/wp-content/uploads/2024/07/mau-thiet-ke-spa-thu-cung.jpg"
-               },
-               {
-                title: "Thực phẩm healty & Đặc sản vùng miền",
-                desc: "Trà Kombucha, bánh ăn kiêng, hạt dinh dưỡng và các sản phẩm đạt chứng nhận OCOP.",
-                tag: "Healthy",
-                img: "https://images.unsplash.com/photo-1567769541495-338ee7203e3c?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-               },
+                {
+                  title: "Thời Trang Mix & Match",
+                  desc: "Các mặt hàng Local Brand chất lượng cao, đồ tập Yoga, và đặc biệt là phong cách Quiet Luxury (sang trọng thầm lặng) hoặc Streetwear Unisex.",
+                  tag: "Xu hướng thời trang",
+                  img: "https://images.unsplash.com/photo-1613728455120-d00493b5e77e?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                  slug: "thoi-trang-mix-match" // <--- THÊM DÒNG NÀY ĐỂ TẠO LINK
+                },
+                {
+                  title: "Mỹ phẩm & Chăm sóc cá nhân",
+                  desc: "Dụng cụ nail thủ công (press-on nails), và các thiết bị chăm sóc da mini tại nhà (máy rửa mặt, máy massage).",
+                  tag: "Skincare",
+                  img: "https://tint.creativemarket.com/n5FB40tiOuSCkdlSyWK94UokNgpfOE1xi-OEd6P72oU/width:1200/height:800/gravity:ce/rt:fill-down/el:1/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzUxMDQvNTEwNDUvNTEwNDU5MjkvOC1iZWF1dHktYW5kLXNraW5jYXJlLW51c2luZXNzLXN0b2NrLWltYWdlLWJ1bmRsZS1vLmpwZyMxNzE5NDMzNjY0?1719433664",
+                  slug: "my-pham-cham-soc" // <--- THÊM DÒNG NÀY ĐỂ TẠO LINK
+                },
+                {
+                  title: "Đồ gia dụng & Decor thông minh",
+                  desc: "Những món đồ (vô tri) nhưng tiện ích như đèn LED decor góc làm việc, máy in nhãn mini, kệ nhựa đa năng hoặc các sản phẩm Smart Home giá rẻ.",
+                  tag: "Decor",
+                  img: "https://furaka.vn/wp-content/uploads/2024/09/Thiet-ke-ban-lam-viec-gan-tuong-1.jpg",
+                  slug: "do-gia-dung-decor" // <--- THÊM DÒNG NÀY ĐỂ TẠO LINK
+                },
+                {
+                  title: "Sản phẩm cho thú cưng",
+                  desc: "Các loại hạt dinh dưỡng, quần áo thời trang cho chó mèo và đồ chơi thông minh cho thú cưng.",
+                  tag: "Pet care",
+                  img: "https://finterior.com.vn/wp-content/uploads/2024/07/mau-thiet-ke-spa-thu-cung.jpg",
+                  slug: "san-pham-thu-cung" // <--- THÊM DÒNG NÀY ĐỂ TẠO LINK
+                },
+                {
+                  title: "Thực phẩm healty & Đặc sản vùng miền",
+                  desc: "Trà Kombucha, bánh ăn kiêng, hạt dinh dưỡng và các sản phẩm đạt chứng nhận OCOP.",
+                  tag: "Healthy",
+                  img: "https://images.unsplash.com/photo-1567769541495-338ee7203e3c?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                  slug: "thuc-pham-healthy" // <--- THÊM DÒNG NÀY ĐỂ TẠO LINK
+                },
               ].map((item, i) => (
-                <div key={i} className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col"> {/* THÊM flex flex-col Ở ĐÂY */}
-    
-                  <div className="h-56 overflow-hidden relative flex-shrink-0">
-                    <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                    <div className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">
-                      {item.tag}
+                <div key={i} className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col">
+          
+                  {/* PHẦN 1: ẢNH VÀ THÔNG TIN ĐƯỢC BỌC BỞI LINK */}
+                  <Link href={`/san-pham/${item.slug}`} className="flex flex-col flex-grow cursor-pointer">
+                    <div className="h-56 overflow-hidden relative flex-shrink-0">
+                      <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                      <div className="absolute top-4 left-4 bg-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">
+                        {item.tag}
+                      </div>
                     </div>
+
+                    <div className="px-6 pt-6 pb-4 flex flex-col flex-grow">
+                      <h4 className="font-bold text-xl text-blue-900 mb-2 group-hover:text-blue-600 transition-colors">{item.title}</h4>
+                      <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                    </div>
+                  </Link>
+
+                  {/* PHẦN 2: NÚT ĐẶT HÀNG TÁCH RIÊNG ĐỂ TRẢ VỀ TAB HOME CÓ FORM CHỨ KHÔNG CHUYỂN TRANG */}
+                  <div className="px-6 pb-6 mt-auto">
+                    <button 
+                      onClick={() => setActiveTab('home')} 
+                      className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200"
+                    >
+                      Đặt hàng ngay
+                    </button>
                   </div>
 
-                   <div className="p-6 flex flex-col flex-grow"> {/* THÊM flex flex-col flex-grow Ở ĐÂY */}
-                     <h4 className="font-bold text-xl text-blue-900 mb-2">{item.title}</h4>
-                     <p className="text-gray-500 text-sm leading-relaxed mb-6">{item.desc}</p>
-      
-                     {/* THÊM mt-auto VÀO CLASS CỦA BUTTON */}
-                     <button 
-                       onClick={() => setActiveTab('home')} 
-                       className="mt-auto w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200"
-                     >
-                       Nhận thông tin tư vấn
-                     </button>
-                   </div>
                 </div>
               ))}
             </div>
