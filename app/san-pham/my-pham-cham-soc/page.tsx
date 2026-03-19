@@ -8,7 +8,11 @@ export default function MyPhamChamSoc() {
       </Link>
       <div className="grid md:grid-cols-2 gap-10">
         <div className="rounded-2xl overflow-hidden shadow-xl h-[400px]">
-          <img src="https://tint.creativemarket.com/n5FB40tiOuSCkdlSyWK94UokNgpfOE1xi-OEd6P72oU/width:1200/height:800/gravity:ce/rt:fill-down/el:1/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzUxMDQvNTEwNDUvNTEwNDU5MjkvOC1iZWF1dHktYW5kLXNraW5jYXJlLW51c2luZXNzLXN0b2NrLWltYWdlLWJ1bmRsZS1vLmpwZyMxNzE5NDMzNjY0?1719433664" className="w-full h-full object-cover" />
+          <img 
+            src="https://tint.creativemarket.com/n5FB40tiOuSCkdlSyWK94UokNgpfOE1xi-OEd6P72oU/width:1200/height:800/gravity:ce/rt:fill-down/el:1/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzUxMDQvNTEwNDUvNTEwNDU5MjkvOC1iZWF1dHktYW5kLXNraW5jYXJlLW51c2luZXNzLXN0b2NrLWltYWdlLWJ1bmRsZS1vLmpwZyMxNzE5NDMzNjY0?1719433664" 
+            alt="Mỹ Phẩm làm đẹp"
+            className="w-full h-full object-cover" 
+          />
         </div>
         <div className="space-y-6">
           <div className="inline-block bg-pink-100 text-pink-700 font-bold px-4 py-1 rounded-full text-sm uppercase">Skincare & Beauty</div>
