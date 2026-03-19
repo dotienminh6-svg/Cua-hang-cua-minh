@@ -9,34 +9,39 @@ import { useSearchParams } from 'next/navigation';
 // COMPONENT CON: CHỨA TOÀN BỘ LOGIC VÀ GIAO DIỆN
 // ==========================================
 function HomeContent() {
-  const [loading, setLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('home');
-
   const searchParams = useSearchParams();
-  const tab = searchParams.get('tab');
+  const initialTab = searchParams.get('tab') || 'home';
 
+  const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState(initialTab);
   useEffect(() => {
-    if (tab === 'news') {
-      setActiveTab('news'); // Tự động mở tab Hot Trend
+  // Nếu là tab news, chúng ta mới xử lý vị trí cuộn
+  if (initialTab === 'news') {
+    setActiveTab('news');
+
+    // Lấy vị trí đã lưu trong bộ nhớ tạm
+    const savedScroll = sessionStorage.getItem('homeScrollY');
+    
+    if (savedScroll) {
+      // Dùng mã này để "ép" trình duyệt đứng im tại tọa độ đó ngay lập tức
+      // mà không có hiệu ứng trượt hay nhảy
+      window.scrollTo(0, parseInt(savedScroll));
       
+      // Thêm một lần nữa sau 50ms để chắc chắn (phòng trường hợp ảnh chưa tải xong làm lệch trang)
       setTimeout(() => {
-        // Kiểm tra xem trình duyệt có nhớ vị trí cũ không
-        const savedScroll = sessionStorage.getItem('homeScrollY');
-        
-        if (savedScroll) {
-          // Nếu có, nhảy ngay lập tức đến vị trí đó
-          window.scrollTo({ top: parseInt(savedScroll), behavior: 'auto' });
-          sessionStorage.removeItem('homeScrollY'); // Xóa đi để không bị lỗi cho các lần sau
-        } else {
-          // Nếu không (vào lần đầu), cuộn xuống phần Hot Trend như bình thường
-          const element = document.getElementById('hot-trend-section');
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      }, 100); // Đợi 100ms để React vẽ xong giao diện rồi mới nhảy
+        window.scrollTo(0, parseInt(savedScroll));
+      }, 50);
+
+      sessionStorage.removeItem('homeScrollY');
+    } else {
+      // Nếu không có vị trí lưu, cuộn xuống phần Hot Trend 
+      const element = document.getElementById('hot-trend-section');
+      if (element) {
+        element.scrollIntoView({ behavior: 'auto' }); // Để 'auto' thay vì 'smooth' để không bị trượt
+      }
     }
-  }, [tab]);
+  }
+}, [initialTab]);
 
   const sendEmail = (e: any) => {
     e.preventDefault();
