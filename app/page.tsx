@@ -33,8 +33,8 @@ export default function Home() {
     </div>
 
     {/* PHẦN GIỮA: Banner rộng hơn để hiện 3 ảnh chạy cùng lúc */}
-    <div className="hidden lg:flex items-center justify-center flex-grow max-w-2xl px-4">
-      <div className="w-full h-20 overflow-hidden">
+    <div className="hidden lg:flex items-center justify-center flex-1 max-w-2xl mx-8">
+      <div className="w-full h-24 overflow-hidden rounded-xl bg-gray-50 shadow-inner">
         <BannerCarousel />
       </div>
     </div>
