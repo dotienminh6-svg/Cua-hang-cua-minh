@@ -4,7 +4,7 @@ export default function ThoiTrangMixMatch() {
   return (
     <div className="max-w-5xl mx-auto py-12 px-6">
       {/* Nút quay lại */}
-      <Link href="/" className="inline-flex items-center text-blue-600 font-bold mb-8 hover:text-blue-800 transition-colors">
+      <Link href="/?tab=news" className="inline-flex items-center text-blue-600 font-bold mb-8 hover:text-blue-800 transition-colors">
         ← Quay lại trang chủ
       </Link>
 

@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function DoGiaDungDecor() {
   return (
     <div className="max-w-5xl mx-auto py-12 px-6">
-      <Link href="/" className="inline-flex items-center text-blue-600 font-bold mb-8 hover:text-blue-800 transition-colors">
+      <Link href="/?tab=news" className="inline-flex items-center text-blue-600 font-bold mb-8 hover:text-blue-800 transition-colors">
         ← Quay lại trang chủ
       </Link>
       <div className="grid md:grid-cols-2 gap-10">

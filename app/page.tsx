@@ -3,10 +3,27 @@ import { BannerCarousel } from '../components/BannerCarousel';
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
+
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab');
+
+  useEffect(() => {
+    if (tab === 'news') {
+      setActiveTab('news'); // Tự động mở tab Hot Trend
+      
+      // Mẹo nhỏ: Cuộn xuống đúng phần nội dung để khách không phải kéo chuột
+      const element = document.getElementById('hot-trend-section');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [tab]);
 
   const sendEmail = (e: any) => {
     e.preventDefault();
