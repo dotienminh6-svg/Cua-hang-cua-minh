@@ -23,18 +23,18 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-aio-bg font-sans text-gray-900 relative">
-      {/* HEADER */}
+{/* HEADER */}
 <header className="bg-white py-4 px-6 border-b border-gray-100 shadow-sm">
-  <div className="max-w-7xl mx-auto flex items-center justify-between">
+  <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
     
     {/* Góc trái: Chỉ có Logo */}
     <div className="flex items-center">
       <img src="/logo.png" alt="Logo" className="h-32 w-auto object-contain transition-transform hover:scale-105" />
     </div>
 
-    {/* PHẦN GIỮA: Banner nhỏ gọn w-32 h-20 */}
-    <div className="hidden lg:flex items-center justify-center flex-1 max-w-2xl mx-8">
-      <div className="w-full h-24 overflow-hidden rounded-xl bg-gray-50 shadow-inner">
+    {/* PHẦN GIỮA: Banner rộng hơn để hiện 3 ảnh chạy cùng lúc */}
+    <div className="hidden lg:flex items-center justify-center flex-grow max-w-2xl px-4">
+      <div className="w-full h-20 overflow-hidden">
         <BannerCarousel />
       </div>
     </div>
