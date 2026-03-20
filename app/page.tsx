@@ -301,12 +301,14 @@ function HomeContent() {
               {/* Nơi nhúng Plugin Bình luận (Cho phép bạn quản lý, Xóa, Phê duyệt) */}
               <div className="w-full bg-white rounded-xl p-4 flex justify-center min-h-[300px]">
                 {/* Đây là khung bình luận thật sẽ hiển thị */}
-                <div 
-                  className="fb-comments" 
-                  data-href="https://allinonevn.com" 
-                  data-width="100%" 
-                  data-numposts="10"
-                ></div>
+                <div className="w-full bg-white rounded-xl p-4 flex justify-center min-h-[300px]">
+                  <div 
+                    className="fb-comments" 
+                    data-href={typeof window !== 'undefined' ? window.location.href : 'https://allinonevn.com'} 
+                    data-width="100%" 
+                    data-numposts="10"
+                  ></div>
+                </div>
              </div>
 
             </div>
