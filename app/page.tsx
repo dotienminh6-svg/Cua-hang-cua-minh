@@ -88,20 +88,31 @@ function HomeContent() {
       </header>
 
       {/* MENU */}
-      <nav className="bg-[#337ab7] text-white sticky top-0 z-50 shadow-md">
-        <div className="max-w-7xl mx-auto flex overflow-x-auto scrollbar-hide">
-          {['home', 'about', 'news'].map((tabItem) => (
-            <button 
-              key={tabItem}
-              onClick={() => setActiveTab(tabItem)}
-              className={`px-8 py-4 font-bold uppercase text-xs tracking-widest transition-all whitespace-nowrap ${
-                activeTab === tabItem ? 'bg-[#23527c] border-b-4 border-yellow-400' : 'hover:bg-[#286090]'
-              }`}
-            >
-              {tabItem === 'home' ? 'Trang chủ' : tabItem === 'about' ? 'Giới thiệu' : 'Hot trend'}
-            </button>
-          ))}
-        </div>
+      <nav className="flex space-x-6 md:space-x-8 overflow-x-auto pb-2 md:pb-0">
+        <button 
+          onClick={() => setActiveTab('home')} 
+          className={`font-semibold whitespace-nowrap pb-1 border-b-2 transition-colors ${activeTab === 'home' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-blue-500'}`}
+        >
+          Giới thiệu
+        </button>
+        <button 
+          onClick={() => setActiveTab('news')} 
+          className={`font-semibold whitespace-nowrap pb-1 border-b-2 transition-colors ${activeTab === 'news' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-blue-500'}`}
+        >
+          Hot Trend
+        </button>
+        <button 
+          onClick={() => setActiveTab('community')} 
+          className={`font-semibold whitespace-nowrap pb-1 border-b-2 transition-colors ${activeTab === 'community' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-blue-500'}`}
+        >
+          Cộng đồng
+        </button>
+        <button 
+          onClick={() => setActiveTab('partnership')} 
+          className={`font-semibold whitespace-nowrap pb-1 border-b-2 transition-colors ${activeTab === 'partnership' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-blue-500'}`}
+        >
+          Hợp tác & Liên kết
+        </button>
       </nav>
 
       {/* NỘI DUNG CHÍNH */}
@@ -282,7 +293,85 @@ function HomeContent() {
             </div>
           </div>
         )}
-       </div> 
+        {/* TRANG CỘNG ĐỒNG & FEEDBACK */}
+        {activeTab === 'community' && (
+          <div className="space-y-12 animate-fade-in mt-10">
+            <div className="text-center">
+              <h2 className="text-3xl font-black text-blue-900 uppercase">Góc Chia Sẻ</h2>
+              <p className="text-gray-500 mt-2">Nơi khách hàng để lại đánh giá và phản hồi về sản phẩm</p>
+            </div>
+
+            {/* Giao diện khu vực Bình luận / Đánh giá */}
+            <div className="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+      
+              {/* Nơi nhúng Plugin Bình luận (Cho phép bạn quản lý, Xóa, Phê duyệt) */}
+              <div className="w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-12 text-center">
+                <svg className="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                </svg>
+                <h3 className="text-lg font-bold text-gray-900">Khu vực tích hợp Plugin Bình Luận</h3>
+                <p className="text-gray-500 text-sm mt-2 max-w-md mx-auto">
+                  Để có quyền kiểm duyệt (xóa comment khiếm nhã), chỗ này chúng ta sẽ nhúng mã của <strong>Facebook Comments</strong> hoặc hệ thống quản lý chuyên dụng.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        )}
+        {/* TRANG HỢP TÁC & LIÊN KẾT */}
+        {activeTab === 'partnership' && (
+          <div className="space-y-16 animate-fade-in mt-10">
+            <div className="text-center">
+              <h2 className="text-3xl font-black text-blue-900 uppercase">Đối tác & Liên kết</h2>
+              <p className="text-gray-500 mt-2">Mạng lưới phân phối, dropshipping và không gian quảng cáo</p>
+            </div>
+
+            {/* KHU VỰC 1: BANNER QUẢNG CÁO (Dành cho thuê) */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 border-l-4 border-blue-600 pl-4">Không Gian Tài Trợ</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Banner 1 */}
+                <a href="#lien-he" className="block relative h-48 bg-gradient-to-br from-blue-800 to-blue-600 rounded-2xl overflow-hidden group shadow-md hover:shadow-lg transition-all">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                    <span className="font-black text-2xl tracking-wider uppercase mb-2">Vị trí Quảng Cáo 1</span>
+                    <span className="bg-white text-blue-800 px-4 py-1 rounded-full text-sm font-bold group-hover:scale-105 transition-transform">Liên hệ đặt chỗ ngay</span>
+                  </div>
+                </a>
+        
+                {/* Banner 2 */}
+                <a href="#lien-he" className="block relative h-48 bg-gradient-to-br from-gray-800 to-gray-600 rounded-2xl overflow-hidden group shadow-md hover:shadow-lg transition-all">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                    <span className="font-black text-2xl tracking-wider uppercase mb-2">Vị trí Quảng Cáo 2</span>
+                    <span className="bg-white text-gray-900 px-4 py-1 rounded-full text-sm font-bold group-hover:scale-105 transition-transform">Liên hệ đặt chỗ ngay</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* KHU VỰC 2: MẠNG LƯỚI ĐỐI TÁC */}
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 border-l-4 border-blue-600 pl-4">Mạng Lưới Phân Phối</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        
+                {/* Các đối tác mẫu */}
+                {[
+                  { name: "Nidec", desc: "Đối tác thiết bị", color: "bg-blue-50 text-blue-700 border-blue-100" },
+                  { name: "Schneider", desc: "Tự động hóa", color: "bg-green-50 text-green-700 border-green-100" },
+                  { name: "Zebra", desc: "Giải pháp mã vạch", color: "bg-gray-50 text-gray-800 border-gray-200" },
+                  { name: "Jabil", desc: "Đối tác sản xuất", color: "bg-indigo-50 text-indigo-700 border-indigo-100" }
+                ].map((partner, idx) => (
+                  <div key={idx} className={`p-6 rounded-xl border flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md transition-shadow ${partner.color}`}>
+                    <span className="font-black text-xl mb-1">{partner.name}</span>
+                     <span className="text-xs font-medium uppercase tracking-wider opacity-80">{partner.desc}</span>
+                  </div>
+                ))}
+        
+              </div>
+            </div>
+
+          </div>
+        )}
+      </div> 
 
       {/* FOOTER */}
       <footer className="bg-black border-t border-gray-800 pt-16 pb-8 text-white">
