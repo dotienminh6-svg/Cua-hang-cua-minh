@@ -87,32 +87,26 @@ function HomeContent() {
         </div>
       </header>
 
-      {/* MENU */}
-      <nav className="flex space-x-6 md:space-x-8 overflow-x-auto pb-2 md:pb-0">
-        <button 
-          onClick={() => setActiveTab('home')} 
-          className={`font-semibold whitespace-nowrap pb-1 border-b-2 transition-colors ${activeTab === 'home' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-blue-500'}`}
-        >
-          Giới thiệu
-        </button>
-        <button 
-          onClick={() => setActiveTab('news')} 
-          className={`font-semibold whitespace-nowrap pb-1 border-b-2 transition-colors ${activeTab === 'news' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-blue-500'}`}
-        >
-          Hot Trend
-        </button>
-        <button 
-          onClick={() => setActiveTab('community')} 
-          className={`font-semibold whitespace-nowrap pb-1 border-b-2 transition-colors ${activeTab === 'community' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-blue-500'}`}
-        >
-          Cộng đồng
-        </button>
-        <button 
-          onClick={() => setActiveTab('partnership')} 
-          className={`font-semibold whitespace-nowrap pb-1 border-b-2 transition-colors ${activeTab === 'partnership' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-blue-500'}`}
-        >
-          Hợp tác & Liên kết
-        </button>
+      {/* MENU ĐIỀU HƯỚNG */}
+      <nav className="bg-[#337ab7] text-white sticky top-0 z-50 shadow-md">
+        <div className="max-w-7xl mx-auto flex overflow-x-auto scrollbar-hide px-6">
+          {[
+            { id: 'home', label: 'Giới thiệu' },
+            { id: 'news', label: 'Hot Trend' },
+            { id: 'community', label: 'Cộng đồng' },
+            { id: 'partnership', label: 'Hợp tác & Liên kết' }
+          ].map((tabItem) => (
+            <button
+              key={tabItem.id}
+              onClick={() => setActiveTab(tabItem.id)}
+              className={`px-8 py-4 font-bold uppercase text-xs tracking-widest transition-all whitespace-nowrap ${
+                activeTab === tabItem.id ? 'bg-[#23527c] border-b-4 border-yellow-400' : 'hover:bg-[#286090]'
+              }`}
+            >
+              {tabItem.label}
+            </button>
+          ))}
+        </div>
       </nav>
 
       {/* NỘI DUNG CHÍNH */}
