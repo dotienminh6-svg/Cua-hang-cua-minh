@@ -20,17 +20,17 @@ export default function SanPhamThuCung() {
           </div>
           <h1 className="text-4xl font-black text-blue-900">Sản phẩm cho thú cưng</h1>
           <div className="text-gray-600 space-y-4 leading-relaxed">
-          <p>
-            Chăm sóc thú cưng như thành viên trong gia đình đang là xu hướng. Từ thực phẩm dinh dưỡng đến đồ chơi thông minh, chúng tôi giúp bạn nhập hàng từ những thương hiệu uy tín nhất.
-          </p>
-          <p>
+            <p>
+              Chăm sóc thú cưng như thành viên trong gia đình đang là xu hướng. Từ thực phẩm dinh dưỡng đến đồ chơi thông minh, chúng tôi giúp bạn nhập hàng từ những thương hiệu uy tín nhất.
+            </p>
+            <p>
               Với dịch vụ của AllInOneVN, bạn có thể dễ dàng nhập các mặt hàng cho thú cưng hot nhất từ các nơi uy tín với giá gốc, đảm bảo chất lượng và an toàn với thú cưng.
-          </p>
-        </div> 
+            </p>
+          </div> 
           <div className="pt-6 border-t border-gray-100">
             <p className="text-sm text-gray-500 mb-3">Bạn muốn kinh doanh mặt hàng này?</p>
             <Link href="/" className="inline-block w-full md:w-auto text-center bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
-              Tìm nguồn hàng Pet Care
+              Nhận tư vấn
             </Link>
           </div>
         </div>

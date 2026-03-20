@@ -15,14 +15,22 @@ export default function MyPhamChamSoc() {
           />
         </div>
         <div className="space-y-6">
-          <div className="inline-block bg-pink-100 text-pink-700 font-bold px-4 py-1 rounded-full text-sm uppercase">Skincare & Beauty</div>
+          <div className="inline-block bg-pink-100 text-pink-700 font-bold px-4 py-1 rounded-full text-sm uppercase">
+            Xu hướng 2026
+          </div>
           <h1 className="text-4xl font-black text-blue-900">Mỹ phẩm & Chăm sóc cá nhân</h1>
-          <p className="text-gray-600 leading-relaxed">
+          <div className="text-gray-600 space-y-4 leading-relaxed">
+          <p>
             Dụng cụ nail thủ công (press-on nails), và các thiết thiết bị chăm sóc da mini tại nhà đang bùng nổ. Người tiêu dùng ngày càng ưu tiên các giải pháp làm đẹp tiện lợi, tiết kiệm thời gian ngay tại nhà.
           </p>
+          <p>
+              Với dịch vụ của AllInOneVN, bạn có thể dễ dàng nhập các mặt hàng mỹ phẩm, chăm sóc da hot nhất từ các nơi uy tín với giá gốc, đảm bảo chất lượng và an toàn khi sử dụng.
+          </p>
+          </div>
           <div className="pt-6 border-t border-gray-100">
+            <p className="text-sm text-gray-500 mb-3">Bạn muốn kinh doanh mặt hàng này?</p>
             <Link href="/" className="inline-block w-full md:w-auto text-center bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
-              Nhận tư vấn nhập hàng
+              Nhận tư vấn 
             </Link>
           </div>
         </div>
