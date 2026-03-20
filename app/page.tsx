@@ -299,15 +299,15 @@ function HomeContent() {
             <div className="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
       
               {/* Nơi nhúng Plugin Bình luận (Cho phép bạn quản lý, Xóa, Phê duyệt) */}
-              <div className="w-full bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-12 text-center">
-                <svg className="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                </svg>
-                <h3 className="text-lg font-bold text-gray-900">Khu vực tích hợp Plugin Bình Luận</h3>
-                <p className="text-gray-500 text-sm mt-2 max-w-md mx-auto">
-                  Để có quyền kiểm duyệt (xóa comment khiếm nhã), chỗ này chúng ta sẽ nhúng mã của <strong>Facebook Comments</strong> hoặc hệ thống quản lý chuyên dụng.
-                </p>
-              </div>
+              <div className="w-full bg-white rounded-xl p-4 flex justify-center min-h-[300px]">
+                {/* Đây là khung bình luận thật sẽ hiển thị */}
+                <div 
+                  className="fb-comments" 
+                  data-href="https://allinonevn.com" 
+                  data-width="100%" 
+                  data-numposts="10"
+                ></div>
+             </div>
 
             </div>
           </div>
