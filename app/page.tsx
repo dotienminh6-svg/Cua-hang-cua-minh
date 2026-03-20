@@ -304,7 +304,7 @@ function HomeContent() {
                 <div className="w-full bg-white rounded-xl p-4 flex justify-center min-h-[300px]">
                   <div 
                     className="fb-comments" 
-                    data-href={typeof window !== 'undefined' ? window.location.href : 'https://allinonevn.com'} 
+                    data-href={typeof window !== 'undefined' ? window.location.href : 'https://cua-hang-cua-minh.vercel.app/'} 
                     data-width="100%" 
                     data-numposts="10"
                   ></div>
