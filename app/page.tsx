@@ -37,21 +37,23 @@ function HomeContent() {
 
     // 2. XỬ LÝ RENDER LẠI FACEBOOK COMMENT
     if (activeTab === 'community') {
-      const parseFB = () => {
-        // Dùng (window as any) để TypeScript không báo lỗi đỏ
+      const initFacebook = () => {
         const win = window as any;
         if (typeof win !== 'undefined' && win.FB) {
-          win.FB.XFBML.parse(); 
+          // Ép FB quét toàn bộ trang để tìm thẻ fb-comments
+          win.FB.XFBML.parse();
+          console.log("Đã tìm thấy FB và render thành công!");
         } else {
-          // Vì layout dùng 'lazyOnload' nên đôi khi FB tải chậm một chút
-          // Nếu chưa có FB, đợi 500ms rồi thử lại
-          setTimeout(parseFB, 500);
+          // Nếu chưa có, thử lại sau mỗi 300ms
+          console.log("Đang chờ Facebook SDK tải...");
+          setTimeout(initFacebook, 300);
         }
       };
-      parseFB();
-    }
-  }, [initialTab, activeTab]); // Dấu đóng ngoặc chuẩn xác, chỉ gọi 1 lần
 
+      // Đợi 200ms để đảm bảo React đã tạo xong các thẻ HTML rồi mới gọi Facebook
+      setTimeout(initFacebook, 200);
+    }
+  }, [initialTab, activeTab]);
   const sendEmail = (e: any) => {
     e.preventDefault();
     setLoading(true);
