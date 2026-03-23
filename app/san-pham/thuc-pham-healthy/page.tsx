@@ -29,7 +29,7 @@ export default function ThucPhamHealthy() {
           </div>  
 
           <div className="pt-6 border-t border-gray-100">
-            <p className="text-sm text-gray-500 mb-3">Bạn muốn kinh doanh mặt hàng này?</p>
+            <p className="text-sm text-gray-500 mb-3">Bạn muốn được tư vấn kỹ hơn về mặt hàng này ?</p>
             <Link href="/" className="inline-block w-full md:w-auto text-center bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
               Nhận tư vấn 
             </Link>

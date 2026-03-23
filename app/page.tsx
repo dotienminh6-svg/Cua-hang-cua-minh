@@ -15,34 +15,43 @@ function HomeContent() {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(initialTab);
   useEffect(() => {
-  // Nếu là tab news, chúng ta mới xử lý vị trí cuộn
-  if (initialTab === 'news') {
-    setActiveTab('news');
+    // 1. XỬ LÝ VỊ TRÍ CUỘN CHO TAB NEWS
+    if (initialTab === 'news') {
+      setActiveTab('news');
 
-    // Lấy vị trí đã lưu trong bộ nhớ tạm
-    const savedScroll = sessionStorage.getItem('homeScrollY');
-    
-    if (savedScroll) {
-      // Dùng mã này để "ép" trình duyệt đứng im tại tọa độ đó ngay lập tức
-      // mà không có hiệu ứng trượt hay nhảy
-      window.scrollTo(0, parseInt(savedScroll));
+      const savedScroll = sessionStorage.getItem('homeScrollY');
       
-      // Thêm một lần nữa sau 50ms để chắc chắn (phòng trường hợp ảnh chưa tải xong làm lệch trang)
-      setTimeout(() => {
+      if (savedScroll) {
         window.scrollTo(0, parseInt(savedScroll));
-      }, 50);
-
-      sessionStorage.removeItem('homeScrollY');
-    } else {
-      // Nếu không có vị trí lưu, cuộn xuống phần Hot Trend 
-      const element = document.getElementById('hot-trend-section');
-      if (element) {
-        element.scrollIntoView({ behavior: 'auto' }); // Để 'auto' thay vì 'smooth' để không bị trượt
+        setTimeout(() => {
+          window.scrollTo(0, parseInt(savedScroll));
+        }, 50);
+        sessionStorage.removeItem('homeScrollY');
+      } else {
+        const element = document.getElementById('hot-trend-section');
+        if (element) {
+          element.scrollIntoView({ behavior: 'auto' });
+        }
       }
     }
-  }
-}, [initialTab]);
 
+    // 2. XỬ LÝ RENDER LẠI FACEBOOK COMMENT
+    if (activeTab === 'community') {
+      const parseFB = () => {
+        // Dùng (window as any) để TypeScript không báo lỗi đỏ
+        const win = window as any;
+        if (typeof win !== 'undefined' && win.FB) {
+          win.FB.XFBML.parse(); 
+        } else {
+          // Vì layout dùng 'lazyOnload' nên đôi khi FB tải chậm một chút
+          // Nếu chưa có FB, đợi 500ms rồi thử lại
+          setTimeout(parseFB, 500);
+        }
+      };
+      parseFB();
+    }
+  }, [initialTab, activeTab]); // Dấu đóng ngoặc chuẩn xác, chỉ gọi 1 lần
+  
   const sendEmail = (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -304,7 +313,7 @@ function HomeContent() {
                 <div className="w-full bg-white rounded-xl p-4 flex justify-center min-h-[300px]">
                   <div 
                     className="fb-comments" 
-                    data-href={typeof window !== 'undefined' ? window.location.href : 'https://cua-hang-cua-minh.vercel.app/'} 
+                    data-href={typeof window !== 'undefined' ? window.location.href : 'https://allinonevn.com'} 
                     data-width="100%" 
                     data-numposts="10"
                   ></div>
