@@ -298,31 +298,30 @@ function HomeContent() {
           </div>
         )}
         {/* TRANG CỘNG ĐỒNG & FEEDBACK */}
+        {/* TRANG CỘNG ĐỒNG & FEEDBACK */}
         {activeTab === 'community' && (
-          <div className="space-y-12 animate-fade-in mt-10">
-            <div className="text-center">
-              <h2 className="text-3xl font-black text-blue-900 uppercase">Góc Chia Sẻ</h2>
-              <p className="text-gray-500 mt-2">Nơi khách hàng để lại đánh giá và phản hồi về sản phẩm</p>
-            </div>
+           <div className="space-y-12 animate-fade-in mt-10">
+              <div className="text-center">
+                <h2 className="text-3xl font-black text-blue-900 uppercase">Góc Chia Sẻ</h2>
+                <p className="text-gray-500 mt-2">Nơi khách hàng để lại đánh giá và phản hồi về sản phẩm</p>
+              </div>
 
-            {/* Giao diện khu vực Bình luận / Đánh giá */}
-            <div className="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-      
-              {/* Nơi nhúng Plugin Bình luận (Cho phép bạn quản lý, Xóa, Phê duyệt) */}
-              <div className="w-full bg-white rounded-xl p-4 flex justify-center min-h-[300px]">
-                {/* Đây là khung bình luận thật sẽ hiển thị */}
-                <div className="w-full bg-white rounded-xl p-4 flex justify-center min-h-[300px]">
+              {/* Giao diện khu vực Bình luận */}
+              <div className="max-w-4xl mx-auto bg-white p-2 md:p-8 rounded-2xl shadow-sm border border-gray-100">
+                <div key={activeTab} className="w-full min-h-[300px] flex justify-center">
+                  
+                  {/* ĐÂY CHÍNH LÀ THẺ QUAN TRỌNG NHẤT MÀ BẠN ĐANG THIẾU */}
                   <div 
                     className="fb-comments" 
-                    data-href={typeof window !== 'undefined' ? window.location.href : 'https://allinonevn.com'} 
+                    data-href="https://cua-hang-cua-minh.vercel.app" 
                     data-width="100%" 
                     data-numposts="10"
+                    data-order-by="reverse_time"
                   ></div>
+                  
                 </div>
-             </div>
-
-            </div>
-          </div>
+              </div>
+           </div>
         )}
         {/* TRANG HỢP TÁC & LIÊN KẾT */}
         {activeTab === 'partnership' && (
