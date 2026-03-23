@@ -13,21 +13,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="vi">
       <body>
-        {/* Hệ thống nền của Facebook */}
+        {/* THIẾU CÁI NÀY LÀ KHÔNG CHẠY ĐƯỢC */}
         <div id="fb-root"></div>
         
-        {/* Nhúng bộ SDK của Facebook */}
+        {/* Script tải SDK - Thay AppID của AllInOneVN vào đây */}
         <Script 
           async 
           defer 
           crossOrigin="anonymous" 
-          src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0&appId=1516496857148063" 
-          strategy="lazyOnload"
+          src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v21.0&appId=1516496857148063" 
+          strategy="afterInteractive"
         />
-        
+
         {children}
       </body>
     </html>
-  );
+  )
 }
 
