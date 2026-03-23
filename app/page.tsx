@@ -51,7 +51,7 @@ function HomeContent() {
       parseFB();
     }
   }, [initialTab, activeTab]); // Dấu đóng ngoặc chuẩn xác, chỉ gọi 1 lần
-  
+
   const sendEmail = (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -100,7 +100,8 @@ function HomeContent() {
       <nav className="bg-[#337ab7] text-white sticky top-0 z-50 shadow-md">
         <div className="max-w-7xl mx-auto flex overflow-x-auto scrollbar-hide px-6">
           {[
-            { id: 'home', label: 'Giới thiệu' },
+            { id: 'home', label: 'Trang chủ' },         // Trả lại tên Trang chủ
+            { id: 'about', label: 'Giới thiệu' },       // Thêm mới tab Giới thiệu
             { id: 'news', label: 'Hot Trend' },
             { id: 'community', label: 'Cộng đồng' },
             { id: 'partnership', label: 'Hợp tác & Liên kết' }
