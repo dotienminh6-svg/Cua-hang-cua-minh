@@ -315,7 +315,7 @@ function HomeContent() {
                   {/* ĐÂY CHÍNH LÀ THẺ QUAN TRỌNG NHẤT MÀ BẠN ĐANG THIẾU */}
                   <div 
                     className="fb-comments" 
-                    data-href="https://cua-hang-cua-minh.vercel.app"
+                    data-href="https://developers.facebook.com/docs/plugins/comments/"
                     data-width="100%" 
                     data-numposts="10"
                     data-order-by="reverse_time"
