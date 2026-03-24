@@ -16,44 +16,34 @@ function HomeContent() {
   const [activeTab, setActiveTab] = useState(initialTab);
   useEffect(() => {
     // 1. XỬ LÝ VỊ TRÍ CUỘN CHO TAB NEWS
-    if (initialTab === 'news') {
-      setActiveTab('news');
-
+    if (activeTab === 'news') {
       const savedScroll = sessionStorage.getItem('homeScrollY');
-      
       if (savedScroll) {
         window.scrollTo(0, parseInt(savedScroll));
-        setTimeout(() => {
-          window.scrollTo(0, parseInt(savedScroll));
-        }, 50);
         sessionStorage.removeItem('homeScrollY');
       } else {
         const element = document.getElementById('hot-trend-section');
-        if (element) {
-          element.scrollIntoView({ behavior: 'auto' });
-        }
+        if (element) element.scrollIntoView({ behavior: 'auto' });
       }
     }
 
-    // 2. XỬ LÝ RENDER LẠI FACEBOOK COMMENT
+    // 2. XỬ LÝ RENDER FACEBOOK COMMENT (ĐÃ TỐI ƯU)
     if (activeTab === 'community') {
-      const initFacebook = () => {
+      const renderFB = () => {
         const win = window as any;
-        if (typeof win !== 'undefined' && win.FB) {
-          // Ép FB quét toàn bộ trang để tìm thẻ fb-comments
-          win.FB.XFBML.parse();
-          console.log("Đã tìm thấy FB và render thành công!");
+        if (win.FB && win.FB.XFBML) {
+          console.log("Đang ép Facebook render...");
+          win.FB.XFBML.parse(); 
         } else {
-          // Nếu chưa có, thử lại sau mỗi 300ms
-          console.log("Đang chờ Facebook SDK tải...");
-          setTimeout(initFacebook, 300);
+          // Nếu SDK chưa tải xong, đợi thêm 500ms
+          setTimeout(renderFB, 500);
         }
       };
 
-      // Đợi 200ms để đảm bảo React đã tạo xong các thẻ HTML rồi mới gọi Facebook
-      setTimeout(initFacebook, 200);
+      // Đợi một chút để React vẽ xong cái thẻ <div className="fb-comments">
+      setTimeout(renderFB, 300);
     }
-  }, [initialTab, activeTab]);
+  }, [activeTab]); // Chỉ cần theo dõi activeTab là đủ
   const sendEmail = (e: any) => {
     e.preventDefault();
     setLoading(true);
