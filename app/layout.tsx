@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           defer 
           crossOrigin="anonymous" 
           src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v21.0&appId=1516496857148063" 
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         {children}
