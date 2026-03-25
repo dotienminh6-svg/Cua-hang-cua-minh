@@ -1,5 +1,4 @@
 'use client';
-
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 
@@ -7,100 +6,84 @@ export default function AdminPortal() {
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [reviews, setReviews] = useState<any[]>([]);
+  const [replyTexts, setReplyTexts] = useState<{[key: number]: string}>({});
 
-  // Kiểm tra mật mã
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
       setIsLoggedIn(true);
       fetchFullReviews();
-    } else {
-      alert('Mật mã không đúng!');
-    }
+    } else { alert('Mật mã sai!'); }
   };
 
-  // Lấy toàn bộ bình luận (cả chưa duyệt và đã duyệt)
   async function fetchFullReviews() {
-    const { data, error } = await supabase
-      .from('reviews')
-      .select('*')
-      .order('created_at', { ascending: false });
-    if (data) setReviews(data);
+    const { data } = await supabase.from('reviews').select('*').order('created_at', { ascending: false });
+    if (data) {
+      setReviews(data);
+      // Khởi tạo giá trị ban đầu cho các ô nhập phản hồi
+      const initialReplies: any = {};
+      data.forEach(r => { if(r.shop_reply) initialReplies[r.id] = r.shop_reply });
+      setReplyTexts(initialReplies);
+    }
   }
 
-  // Hàm Duyệt bình luận
-  async function approveReview(id: number) {
+  async function updateReview(id: number, isApproved: boolean) {
     const { error } = await supabase
       .from('reviews')
-      .update({ is_approved: true })
+      .update({ is_approved: isApproved, shop_reply: replyTexts[id] || null })
       .eq('id', id);
-    if (!error) fetchFullReviews();
-  }
-
-  // Hàm Xóa bình luận
-  async function deleteReview(id: number) {
-    if (confirm('Bạn có chắc chắn muốn xóa đánh giá này không?')) {
-      const { error } = await supabase.from('reviews').delete().eq('id', id);
-      if (!error) fetchFullReviews();
+    if (!error) {
+      alert('Đã cập nhật!');
+      fetchFullReviews();
     }
   }
 
   if (!isLoggedIn) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 text-black">
+      <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
         <form onSubmit={handleLogin} className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
-          <h2 className="text-2xl font-bold mb-6 text-center">Admin AllInOneVN</h2>
-          <input
-            type="password"
-            placeholder="Nhập mật mã quản trị"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded mb-4 outline-none focus:border-blue-500"
-          />
-          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded font-bold hover:bg-blue-700">
-            Đăng nhập
-          </button>
+          <h2 className="text-2xl font-bold mb-6 text-center text-black">Admin AllInOneVN</h2>
+          <input type="password" placeholder="Mật mã" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full p-3 border rounded mb-4 text-black outline-none" />
+          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded font-bold">Đăng nhập</button>
         </form>
       </div>
     );
   }
 
   return (
-    <div className="p-8 bg-gray-50 min-h-screen text-black">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8">Quản lý Đánh giá khách hàng</h1>
-        <div className="grid gap-4">
-          {reviews.map((review) => (
-            <div key={review.id} className={`p-4 rounded-lg border bg-white shadow-sm flex justify-between items-center ${!review.is_approved ? 'border-l-4 border-l-yellow-400' : 'border-l-4 border-l-green-500'}`}>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="font-bold text-lg">{review.name}</span>
-                  <span className="text-yellow-500">{'★'.repeat(review.rating)}</span>
-                  {!review.is_approved && (
-                    <span className="bg-yellow-100 text-yellow-700 text-xs px-2 py-0.5 rounded-full font-medium">Chờ duyệt</span>
-                  )}
+    <div className="p-4 sm:p-8 bg-gray-50 min-h-screen text-black">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-2xl font-bold mb-6">Quản lý & Phản hồi đánh giá</h1>
+        <div className="space-y-6">
+          {reviews.map((r) => (
+            <div key={r.id} className={`p-4 bg-white rounded-xl border shadow-sm ${!r.is_approved ? 'border-l-4 border-l-yellow-400' : 'border-l-4 border-l-green-500'}`}>
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <span className="font-bold">{r.name}</span>
+                  <span className="ml-2 text-yellow-500">{'★'.repeat(r.rating)}</span>
                 </div>
-                <p className="text-gray-600">{review.content}</p>
-                {review.image_url && (
-                   <div className="mt-2">
-                     <img src={review.image_url} alt="Review" className="w-32 h-auto rounded border" />
-                   </div>
-                )}
-                <span className="text-xs text-gray-400">{new Date(review.created_at).toLocaleString('vi-VN')}</span>
+                <button onClick={async () => { if(confirm('Xóa?')) await supabase.from('reviews').delete().eq('id', r.id); fetchFullReviews(); }} className="text-red-500 text-sm">Xóa</button>
               </div>
+              <p className="text-gray-700 mb-2">{r.content}</p>
+              {r.image_url && <img src={r.image_url} className="w-32 h-auto rounded mb-3" />}
               
-              <div className="flex gap-2 ml-4">
-                {!review.is_approved && (
-                  <button onClick={() => approveReview(review.id)} className="bg-green-500 text-white px-4 py-1.5 rounded text-sm font-medium hover:bg-green-600">
-                    Duyệt
-                  </button>
-                )}
-                <button onClick={() => deleteReview(review.id)} className="bg-red-50 text-red-600 border border-red-200 px-4 py-1.5 rounded text-sm font-medium hover:bg-red-100">
-                  Xóa
+              {/* Ô nhập phản hồi của shop */}
+              <div className="mt-4 pt-4 border-t border-dashed">
+                <label className="text-xs font-bold text-blue-600 uppercase">Phản hồi của Shop:</label>
+                <textarea 
+                  value={replyTexts[r.id] || ''} 
+                  onChange={(e) => setReplyTexts({...replyTexts, [r.id]: e.target.value})}
+                  className="w-full mt-1 p-2 border rounded text-sm bg-blue-50 focus:bg-white outline-none"
+                  placeholder="Viết lời cảm ơn hoặc giải đáp..."
+                />
+                <button 
+                  onClick={() => updateReview(r.id, true)}
+                  className="mt-2 bg-blue-600 text-white px-4 py-1.5 rounded text-sm font-bold"
+                >
+                  {r.is_approved ? 'Cập nhật phản hồi' : 'Duyệt & Lưu phản hồi'}
                 </button>
               </div>
             </div>
-            
           ))}
         </div>
       </div>

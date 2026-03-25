@@ -169,6 +169,17 @@ export default function ReviewSection() {
               </div>
               <p className="text-gray-700 mb-3">{r.content}</p>
               {r.image_url && <img src={r.image_url} alt="Review" className="w-48 h-auto rounded-lg border" />}
+               
+              {/* PHẦN HIỂN THỊ PHẢN HỒI CỦA SHOP */}
+              {r.shop_reply && (
+                <div className="mt-3 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs font-bold text-blue-700 uppercase">Phản hồi từ AllInOneVN</span>
+                    <span className="text-[10px] bg-blue-600 text-white px-1 rounded">Chủ shop</span>
+                  </div>
+                  <p className="text-sm text-gray-800 italic">"{r.shop_reply}"</p>
+                </div>
+              )}
             </div>
           ))
         )}
