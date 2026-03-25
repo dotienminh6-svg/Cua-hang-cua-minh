@@ -16,14 +16,23 @@ function HomeContent() {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(initialTab);
  useEffect(() => {
-    // 1. GIẢI QUYẾT VẤN ĐỀ 1 & 2: LUÔN CUỘN LÊN ĐẦU TRANG KHI CHUYỂN TAB
-    // Bỏ hẳn phần ép nhảy đến 'hot-trend-section' gây lỗi
-    window.scrollTo({
-      top: 0,
-      behavior: 'instant' // Dùng 'instant' để sang tab mới lập tức ở trên cùng, không bị trượt từ dưới lên gây chóng mặt
-    });
+    // 1. XỬ LÝ VỊ TRÍ CUỘN CHO TẤT CẢ CÁC TAB
+    if (activeTab === 'news') {
+      const savedScroll = sessionStorage.getItem('homeScrollY');
+      if (savedScroll) {
+        // Tình huống 1: Khách hàng từ trang chi tiết Hot Trend quay lại -> Cuộn về đúng chỗ cũ
+        window.scrollTo({ top: parseInt(savedScroll), behavior: 'instant' });
+        sessionStorage.removeItem('homeScrollY');
+      } else {
+        // Tình huống 2: Khách hàng bấm tab Hot Trend từ thanh Menu -> Cuộn lên trên cùng (Đã xóa scrollIntoView gây lỗi)
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    } else {
+      // Tình huống 3: Bấm sang các tab khác (Trang chủ, Giới thiệu, Cộng đồng...) -> Luôn cuộn lên trên cùng
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
 
-    // 2. XỬ LÝ RENDER FACEBOOK COMMENT (Giữ nguyên logic cực chuẩn của bạn)
+    // 2. XỬ LÝ RENDER FACEBOOK COMMENT (Giữ nguyên)
     if (activeTab === 'community') {
       const renderFB = () => {
         const win = window as any;
@@ -39,7 +48,7 @@ function HomeContent() {
       // Đợi một chút để React vẽ xong cái thẻ <div className="fb-comments">
       setTimeout(renderFB, 300);
     }
-  }, [activeTab]); // Bắt đúng sự thay đổi của activeTab
+  }, [activeTab]); // Bắt sự thay đổi của tab
   const sendEmail = (e: any) => {
     e.preventDefault();
     setLoading(true);
