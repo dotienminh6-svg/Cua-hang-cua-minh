@@ -15,20 +15,15 @@ function HomeContent() {
 
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(initialTab);
-  useEffect(() => {
-    // 1. XỬ LÝ VỊ TRÍ CUỘN CHO TAB NEWS
-    if (activeTab === 'news') {
-      const savedScroll = sessionStorage.getItem('homeScrollY');
-      if (savedScroll) {
-        window.scrollTo(0, parseInt(savedScroll));
-        sessionStorage.removeItem('homeScrollY');
-      } else {
-        const element = document.getElementById('hot-trend-section');
-        if (element) element.scrollIntoView({ behavior: 'auto' });
-      }
-    }
+ useEffect(() => {
+    // 1. GIẢI QUYẾT VẤN ĐỀ 1 & 2: LUÔN CUỘN LÊN ĐẦU TRANG KHI CHUYỂN TAB
+    // Bỏ hẳn phần ép nhảy đến 'hot-trend-section' gây lỗi
+    window.scrollTo({
+      top: 0,
+      behavior: 'instant' // Dùng 'instant' để sang tab mới lập tức ở trên cùng, không bị trượt từ dưới lên gây chóng mặt
+    });
 
-    // 2. XỬ LÝ RENDER FACEBOOK COMMENT (ĐÃ TỐI ƯU)
+    // 2. XỬ LÝ RENDER FACEBOOK COMMENT (Giữ nguyên logic cực chuẩn của bạn)
     if (activeTab === 'community') {
       const renderFB = () => {
         const win = window as any;
@@ -44,7 +39,7 @@ function HomeContent() {
       // Đợi một chút để React vẽ xong cái thẻ <div className="fb-comments">
       setTimeout(renderFB, 300);
     }
-  }, [activeTab]); // Chỉ cần theo dõi activeTab là đủ
+  }, [activeTab]); // Bắt đúng sự thay đổi của activeTab
   const sendEmail = (e: any) => {
     e.preventDefault();
     setLoading(true);
