@@ -81,6 +81,11 @@ export default function AdminPortal() {
                   )}
                 </div>
                 <p className="text-gray-600">{review.content}</p>
+                {review.image_url && (
+                   <div className="mt-2">
+                     <img src={review.image_url} alt="Review" className="w-32 h-auto rounded border" />
+                   </div>
+                )}
                 <span className="text-xs text-gray-400">{new Date(review.created_at).toLocaleString('vi-VN')}</span>
               </div>
               
@@ -95,6 +100,7 @@ export default function AdminPortal() {
                 </button>
               </div>
             </div>
+            
           ))}
         </div>
       </div>
