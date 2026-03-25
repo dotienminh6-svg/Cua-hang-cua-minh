@@ -80,7 +80,7 @@ export default function ReviewSection() {
           className="w-full mb-3 p-3 border border-gray-300 rounded outline-none focus:border-blue-500 text-black"
         />
         <textarea
-          placeholder="Chia sẻ cảm nhận của bạn về sản phẩm..."
+          placeholder="Chia sẻ cảm nhận của bạn về dịch vụ của chúng tôi..."
           required
           rows={4}
           value={content}
