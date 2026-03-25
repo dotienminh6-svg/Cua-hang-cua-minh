@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import emailjs from '@emailjs/browser';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import ReviewSection from '@/components/ReviewSection';
 
 // ==========================================
 // COMPONENT CON: CHỨA TOÀN BỘ LOGIC VÀ GIAO DIỆN
@@ -303,13 +304,13 @@ function HomeContent() {
                 <div key={activeTab} className="w-full min-h-[300px] flex justify-center">
                   
                   {/* ĐÂY CHÍNH LÀ THẺ QUAN TRỌNG NHẤT MÀ BẠN ĐANG THIẾU */}
-                  <div 
-                    className="fb-comments" 
-                    data-href="https://cua-hang-cua-minh.vercel.app/"
-                    data-width="100%" 
-                    data-numposts="10"
-                    data-order-by="reverse_time"
-                  ></div>
+                  <div className="py-10">
+                    <h2 className="text-3xl font-bold text-center text-blue-800 mb-2">GÓC CHIA SẺ</h2>
+                    <p className="text-center text-gray-600 mb-8">Nơi khách hàng để lại đánh giá và phản hồi về sản phẩm</p>
+
+                    {/* Chèn Component bình luận vào đây */}
+                    <ReviewSection />
+                  </div>
                   
                 </div>
               </div>
