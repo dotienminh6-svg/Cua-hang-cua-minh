@@ -74,7 +74,7 @@ function HomeContent() {
             <img 
               src="/logo.png" 
               alt="Logo" 
-              className="h-12 md:h-16 w-auto object-contain" />
+              className="h-14 md:h-18 w-auto object-contain" />
           </div>
 
           {/* PHẦN GIỮA: Banner rộng hơn để hiện 3 ảnh chạy cùng lúc */}
