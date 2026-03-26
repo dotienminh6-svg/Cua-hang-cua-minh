@@ -74,13 +74,13 @@ function HomeContent() {
               <img 
                 src="/logo.png" 
                 alt="Logo" 
-                className="h-10 md:h-14 w-auto object-contain" 
+                className="h-14 md:h-18 w-auto object-contain" 
               />
             </div>
 
           {/* PHẦN GIỮA: Banner - Ép chiều cao xuống h-16 để Header thanh thoát hơn */}
             <div className="hidden lg:flex items-center justify-center flex-1 max-w-xl mx-4">
-              <div className="w-full h-16 overflow-hidden rounded-xl bg-gray-50 shadow-inner border border-gray-100">
+              <div className="w-full h-20 overflow-hidden rounded-xl bg-gray-50 shadow-inner border border-gray-100">
                 <BannerCarousel />
               </div>
             </div>
