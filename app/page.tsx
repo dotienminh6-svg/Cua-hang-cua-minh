@@ -65,34 +65,41 @@ function HomeContent() {
 
   return (
     <main className="min-h-screen bg-aio-bg font-sans text-gray-900 relative">
-      {/* HEADER */}
-      <header className="bg-white py-2 md:py-3 w-full border-b">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-4">
-          
-          {/* Góc trái: Chỉ có Logo */}
-          <div className="flex items-center">
-            <img 
-              src="/logo.png" 
-              alt="Logo" 
-              className="h-14 md:h-18 w-auto object-contain" />
-          </div>
-
-          {/* PHẦN GIỮA: Banner rộng hơn để hiện 3 ảnh chạy cùng lúc */}
-          <div className="hidden lg:flex items-center justify-center flex-1 max-w-2xl mx-8">
-            <div className="w-full h-24 overflow-hidden rounded-xl bg-gray-50 shadow-inner">
-              <BannerCarousel />
+      {/* HEADER - Đã tối ưu để mỏng hơn và tách biệt trên Mobile */}
+      <header className="bg-white py-1 md:py-2 w-full border-b sticky top-0 z-50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 flex flex-row justify-between items-center gap-2">
+    
+          {/* Góc trái: Logo - Thu nhỏ chiều cao để giảm khoảng trắng */}
+            <div className="flex-shrink-0">
+              <img 
+                src="/logo.png" 
+                alt="Logo" 
+                className="h-10 md:h-14 w-auto object-contain" 
+              />
             </div>
-          </div>
-          
-          {/* Góc phải: AllInOneVN và slogan */}
-          <div className="flex items-center gap-2 md:gap-4">
-            <span className="text-aio-blue font-extrabold text-lg md:text-xl tracking-tight">AllInOneVN</span>
-            <div className="h-4 w-[1px] bg-gray-300 hidden md:block"></div>
-            <p className="text-aio-blue font-bold hidden md:block uppercase text-[10px] tracking-[0.1em]">
-              Tất cả chỉ trong một click
-            </p>
-          </div>
-          
+
+          {/* PHẦN GIỮA: Banner - Ép chiều cao xuống h-16 để Header thanh thoát hơn */}
+            <div className="hidden lg:flex items-center justify-center flex-1 max-w-xl mx-4">
+              <div className="w-full h-16 overflow-hidden rounded-xl bg-gray-50 shadow-inner border border-gray-100">
+                <BannerCarousel />
+              </div>
+            </div>
+    
+          {/* Góc phải: Thương hiệu & Slogan - Căn phải trên mobile */}
+            <div className="flex flex-col md:flex-row items-end md:items-center gap-0 md:gap-4">
+              <span className="text-aio-blue font-extrabold text-base md:text-xl tracking-tight leading-tight">
+                AllInOneVN
+              </span>
+      
+              {/* Thanh gạch dọc chỉ hiện trên máy tính */}
+              <div className="hidden md:block h-4 w-[1px] bg-gray-300"></div>
+      
+              {/* Slogan: Thu nhỏ chữ, ẩn trên mobile cực nhỏ nếu cần */}
+              <p className="text-aio-blue font-bold uppercase text-[8px] md:text-[10px] tracking-wider opacity-80 md:opacity-100">
+                Tất cả chỉ trong một click
+              </p>
+            </div>
+    
         </div>
       </header>
 
