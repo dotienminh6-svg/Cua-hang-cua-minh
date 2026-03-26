@@ -66,26 +66,29 @@ function HomeContent() {
   return (
     <main className="min-h-screen bg-aio-bg font-sans text-gray-900 relative">
       {/* HEADER */}
-      <header className="bg-white py-4 px-6 border-b border-gray-100 shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <header className="bg-white py-2 md:py-3 w-full border-b">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-4">
           
           {/* Góc trái: Chỉ có Logo */}
           <div className="flex items-center">
-            <img src="/logo.png" alt="Logo" className="h-32 w-auto object-contain transition-transform hover:scale-105" />
+            <img 
+              src="/logo.png" 
+              alt="Logo" 
+              className="h-12 md:h-16 w-auto object-contain" />
           </div>
 
           {/* PHẦN GIỮA: Banner rộng hơn để hiện 3 ảnh chạy cùng lúc */}
           <div className="hidden lg:flex items-center justify-center flex-1 max-w-2xl mx-8">
-            <div className="w-full h-24 overflow-hidden rounded-xl bg-gray-50 shadow-inner">
+            <div className="w-full h-16 overflow-hidden rounded-xl bg-gray-50 shadow-inner">
               <BannerCarousel />
             </div>
           </div>
           
           {/* Góc phải: AllInOneVN và slogan */}
-          <div className="flex items-center gap-4">
-            <span className="text-aio-blue font-extrabold text-2xl tracking-tight">AllInOneVN</span>
-            <div className="h-6 w-[1px] bg-gray-300 hidden md:block"></div>
-            <p className="text-aio-blue font-bold hidden md:block uppercase text-[11px] tracking-[0.2em]">
+          <div className="flex items-center gap-2 md:gap-4">
+            <span className="text-aio-blue font-extrabold text-lg md:text-xl tracking-tight">AllInOneVN</span>
+            <div className="h-4 w-[1px] bg-gray-300 hidden md:block"></div>
+            <p className="text-aio-blue font-bold hidden md:block uppercase text-[10px] tracking-[0.1em]">
               Tất cả chỉ trong một click
             </p>
           </div>
