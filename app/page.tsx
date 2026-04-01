@@ -28,8 +28,11 @@ function HomeContent() {
         window.scrollTo({ top: 0, behavior: 'instant' });
       }
     } else {
-      // Tình huống 3: Bấm sang các tab khác (Trang chủ, Giới thiệu, Cộng đồng...) -> Luôn cuộn lên trên cùng
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      // Tình huống 3: Bấm sang các tab khác -> Luôn cuộn lên trên cùng
+      // NHƯNG CHỈ CUỘN KHI KHÔNG PHẢI LÀ ĐANG PHỤC HỒI TỪ F5
+      if (!sessionStorage.getItem('f5_scroll')) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
     }
 
     // 2. XỬ LÝ RENDER FACEBOOK COMMENT (Giữ nguyên)
@@ -49,21 +52,45 @@ function HomeContent() {
       setTimeout(renderFB, 300);
     }
   }, [activeTab]); // Bắt sự thay đổi của tab
-  // --- CHÈN THÊM ĐOẠN NÀY ĐỂ XỬ LÝ F5 (BƯỚC B) ---
+  // --- BƯỚC 2: ĐỌC URL VÀ PHỤC HỒI TỌA ĐỘ F5 ---
   useEffect(() => {
-    // Lấy tên tab từ dấu # trên thanh địa chỉ (ví dụ: #community)
     const currentHash = window.location.hash.replace('#', '');
   
-    // Nếu người dùng đang ở một link có dấu # (do họ vừa F5 hoặc copy link gửi cho bạn bè)
     if (currentHash) {
-      // Ép State của ứng dụng mở đúng Tab đó
-      setActiveTab(currentHash);
+      setActiveTab(currentHash); // Mở đúng tab
     
-      // Đảm bảo cuộn lên đầu trang của Tab đó ngay khi load xong
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      // Kiểm tra xem có tọa độ cũ do Bước 1 để lại không?
+      const savedScroll = sessionStorage.getItem('f5_scroll');
+    
+      if (savedScroll) {
+        // Nếu có, đợi 1 chút xíu (50ms) để giao diện vẽ xong các Tab, rồi cuộn cái rụp xuống đúng số đó
+        setTimeout(() => {
+          window.scrollTo({ top: parseInt(savedScroll), behavior: 'instant' });
+          sessionStorage.removeItem('f5_scroll'); // Dùng xong thì xóa đi cho sạch
+        }, 50);
+      } else {
+        // Nếu không có (ví dụ khách vừa gõ link vào trình duyệt), mới cuộn lên đầu
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
     }
-  }, []); // Mảng rỗng [] cực kỳ quan trọng: nó giúp code này CHỈ CHẠY 1 LẦN khi vừa tải trang
+  }, []);
 // ----------------------------------------------
+  // --- BƯỚC 1: LƯU TỌA ĐỘ TRƯỚC KHI F5 ---
+  useEffect(() => {
+    const saveScrollPosition = () => {
+      // Nhanh tay lưu lại vị trí cuộn hiện tại vào biến 'f5_scroll'
+      sessionStorage.setItem('f5_scroll', window.scrollY.toString());
+    };
+
+    // Lắng nghe sự kiện người dùng nhấn F5 hoặc tải lại trang
+    window.addEventListener('beforeunload', saveScrollPosition);
+
+    // Dọn dẹp sự kiện khi component bị hủy (bắt buộc trong React)
+    return () => {
+    window.removeEventListener('beforeunload', saveScrollPosition);
+    };
+  }, []); 
+// ----------------------------------------
   const sendEmail = (e: any) => {
     e.preventDefault();
     setLoading(true);
