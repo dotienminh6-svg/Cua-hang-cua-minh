@@ -15,7 +15,7 @@ function HomeContent() {
 
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(initialTab);
- useEffect(() => {
+  useEffect(() => {
     // 1. XỬ LÝ VỊ TRÍ CUỘN CHO TẤT CẢ CÁC TAB
     if (activeTab === 'news') {
       const savedScroll = sessionStorage.getItem('homeScrollY');
@@ -49,6 +49,21 @@ function HomeContent() {
       setTimeout(renderFB, 300);
     }
   }, [activeTab]); // Bắt sự thay đổi của tab
+  // --- CHÈN THÊM ĐOẠN NÀY ĐỂ XỬ LÝ F5 (BƯỚC B) ---
+  useEffect(() => {
+    // Lấy tên tab từ dấu # trên thanh địa chỉ (ví dụ: #community)
+    const currentHash = window.location.hash.replace('#', '');
+  
+    // Nếu người dùng đang ở một link có dấu # (do họ vừa F5 hoặc copy link gửi cho bạn bè)
+    if (currentHash) {
+      // Ép State của ứng dụng mở đúng Tab đó
+      setActiveTab(currentHash);
+    
+      // Đảm bảo cuộn lên đầu trang của Tab đó ngay khi load xong
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, []); // Mảng rỗng [] cực kỳ quan trọng: nó giúp code này CHỈ CHẠY 1 LẦN khi vừa tải trang
+// ----------------------------------------------
   const sendEmail = (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -66,7 +81,7 @@ function HomeContent() {
   return (
     <main className="min-h-screen bg-aio-bg font-sans text-gray-900 relative">
       {/* HEADER - Đã tối ưu để mỏng hơn và tách biệt trên Mobile */}
-      <header className="bg-white py-1 md:py-2 w-full border-b sticky top-0 z-50 shadow-sm">
+      <header className="bg-white py-1 md:py-2 w-full border-b shadow-sm">
         <div className="max-w-7xl mx-auto px-4 flex flex-row justify-between items-center gap-2">
     
           {/* Góc trái: Logo - Thu nhỏ chiều cao để giảm khoảng trắng */}
@@ -115,7 +130,10 @@ function HomeContent() {
           ].map((tabItem) => (
             <button
               key={tabItem.id}
-              onClick={() => setActiveTab(tabItem.id)}
+              onClick={() => {
+                setActiveTab(tabItem.id);
+                window.location.hash = tabItem.id;
+              }}
               className={`px-8 py-4 font-bold uppercase text-xs tracking-widest transition-all whitespace-nowrap ${
                 activeTab === tabItem.id ? 'bg-[#23527c] border-b-4 border-yellow-400' : 'hover:bg-[#286090]'
               }`}
