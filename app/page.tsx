@@ -1,6 +1,6 @@
 "use client";
 import { BannerCarousel } from '../components/BannerCarousel';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useLayoutEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -15,11 +15,7 @@ function HomeContent() {
 
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(initialTab);
-  // =================================================================
-  // 1. LƯU TỌA ĐỘ TRƯỚC KHI F5 (Đã thêm lệnh khóa cuộn trình duyệt)
-  // =================================================================
   useEffect(() => {
-    // Ép trình duyệt KHÔNG tự động cuộn lung tung khi load trang
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
@@ -33,47 +29,40 @@ function HomeContent() {
   }, []);
 
   // =================================================================
-  // 2. ĐỌC URL VÀ PHỤC HỒI TỌA ĐỘ F5 (Tốc độ chớp nhoáng)
+  // 2. ĐỌC URL VÀ PHỤC HỒI TỌA ĐỘ (Chạy trước khi màn hình kịp hiển thị)
   // =================================================================
-  useEffect(() => {
+  useLayoutEffect(() => {
     const currentHash = window.location.hash.replace('#', '');
-    
     if (currentHash) {
       setActiveTab(currentHash); 
     }
 
     const savedScroll = sessionStorage.getItem('f5_scroll');
     if (savedScroll) {
-      // Giảm thời gian chờ xuống 10ms vì data của bạn là tĩnh, vẽ ra ngay lập tức
-      setTimeout(() => {
-        window.scrollTo({ top: parseInt(savedScroll), behavior: 'instant' });
-        // Xóa f5_scroll sau khi dùng xong nhưng delay 1 chút để Tình huống 2/3 không bị chạy nhầm
-        setTimeout(() => sessionStorage.removeItem('f5_scroll'), 100); 
-      }, 10);
+      // Cuộn ngay lập tức ở luồng xử lý ngầm, khách sẽ không thấy cảnh giật từ trên xuống
+      window.scrollTo({ top: parseInt(savedScroll), behavior: 'instant' });
     }
-  }, []);
+  }, []); // Chạy 1 lần duy nhất khi vừa load trang
 
   // =================================================================
-  // 3. XỬ LÝ VỊ TRÍ CUỘN KHI CHUYỂN TAB VÀ RENDER FACEBOOK
+  // 3. XỬ LÝ CHUYỂN TAB VÀ DỌN DẸP BỘ NHỚ
   // =================================================================
   useEffect(() => {
     // --- XỬ LÝ CUỘN ---
     if (activeTab === 'news') {
       const savedScroll = sessionStorage.getItem('homeScrollY');
       if (savedScroll) {
-        // Tình huống 1: Từ trang chi tiết Hot Trend quay lại
         window.scrollTo({ top: parseInt(savedScroll), behavior: 'instant' });
         sessionStorage.removeItem('homeScrollY');
       } else {
-        // Tình huống 2: Bấm tab Hot Trend từ Menu
-        // SỬA Ở ĐÂY: Chỉ cuộn lên 0 nếu KHÔNG PHẢI đang tải lại trang (F5)
+        // Chỉ cuộn lên đầu khi KHÔNG PHẢI đang phục hồi từ F5
         if (!sessionStorage.getItem('f5_scroll')) {
           window.scrollTo({ top: 0, behavior: 'instant' });
         }
       }
     } else {
-      // Tình huống 3: Bấm sang các tab khác
-      // Chỉ cuộn lên 0 nếu KHÔNG PHẢI đang tải lại trang (F5)
+      // Các tab khác (Trang chủ, Cộng đồng...)
+      // Chỉ cuộn lên đầu khi KHÔNG PHẢI đang phục hồi từ F5
       if (!sessionStorage.getItem('f5_scroll')) {
         window.scrollTo({ top: 0, behavior: 'instant' });
       }
@@ -84,7 +73,6 @@ function HomeContent() {
       const renderFB = () => {
         const win = window as any;
         if (win.FB && win.FB.XFBML) {
-          console.log("Đang ép Facebook render...");
           win.FB.XFBML.parse(); 
         } else {
           setTimeout(renderFB, 500);
@@ -92,6 +80,14 @@ function HomeContent() {
       };
       setTimeout(renderFB, 300);
     }
+
+    // CUỐI CÙNG: Sau khi các tab đã nhận diện xong xuôi, mới xóa dấu vết F5
+    // Đặt trong timeout nhỏ để đảm bảo các lệnh cuộn ở trên đã chạy xong
+    const cleanup = setTimeout(() => {
+      sessionStorage.removeItem('f5_scroll');
+    }, 100);
+
+    return () => clearTimeout(cleanup);
   }, [activeTab]);
   const sendEmail = (e: any) => {
     e.preventDefault();
