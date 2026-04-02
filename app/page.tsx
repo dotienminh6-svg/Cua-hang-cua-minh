@@ -15,27 +15,71 @@ function HomeContent() {
 
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState(initialTab);
+  // =================================================================
+  // 1. LƯU TỌA ĐỘ TRƯỚC KHI F5 (Đã thêm lệnh khóa cuộn trình duyệt)
+  // =================================================================
   useEffect(() => {
-    // 1. XỬ LÝ VỊ TRÍ CUỘN CHO TẤT CẢ CÁC TAB
+    // Ép trình duyệt KHÔNG tự động cuộn lung tung khi load trang
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    const saveScrollPosition = () => {
+      sessionStorage.setItem('f5_scroll', window.scrollY.toString());
+    };
+
+    window.addEventListener('beforeunload', saveScrollPosition);
+    return () => window.removeEventListener('beforeunload', saveScrollPosition);
+  }, []);
+
+  // =================================================================
+  // 2. ĐỌC URL VÀ PHỤC HỒI TỌA ĐỘ F5 (Tốc độ chớp nhoáng)
+  // =================================================================
+  useEffect(() => {
+    const currentHash = window.location.hash.replace('#', '');
+    
+    if (currentHash) {
+      setActiveTab(currentHash); 
+    }
+
+    const savedScroll = sessionStorage.getItem('f5_scroll');
+    if (savedScroll) {
+      // Giảm thời gian chờ xuống 10ms vì data của bạn là tĩnh, vẽ ra ngay lập tức
+      setTimeout(() => {
+        window.scrollTo({ top: parseInt(savedScroll), behavior: 'instant' });
+        // Xóa f5_scroll sau khi dùng xong nhưng delay 1 chút để Tình huống 2/3 không bị chạy nhầm
+        setTimeout(() => sessionStorage.removeItem('f5_scroll'), 100); 
+      }, 10);
+    }
+  }, []);
+
+  // =================================================================
+  // 3. XỬ LÝ VỊ TRÍ CUỘN KHI CHUYỂN TAB VÀ RENDER FACEBOOK
+  // =================================================================
+  useEffect(() => {
+    // --- XỬ LÝ CUỘN ---
     if (activeTab === 'news') {
       const savedScroll = sessionStorage.getItem('homeScrollY');
       if (savedScroll) {
-        // Tình huống 1: Khách hàng từ trang chi tiết Hot Trend quay lại -> Cuộn về đúng chỗ cũ
+        // Tình huống 1: Từ trang chi tiết Hot Trend quay lại
         window.scrollTo({ top: parseInt(savedScroll), behavior: 'instant' });
         sessionStorage.removeItem('homeScrollY');
       } else {
-        // Tình huống 2: Khách hàng bấm tab Hot Trend từ thanh Menu -> Cuộn lên trên cùng (Đã xóa scrollIntoView gây lỗi)
-        window.scrollTo({ top: 0, behavior: 'instant' });
+        // Tình huống 2: Bấm tab Hot Trend từ Menu
+        // SỬA Ở ĐÂY: Chỉ cuộn lên 0 nếu KHÔNG PHẢI đang tải lại trang (F5)
+        if (!sessionStorage.getItem('f5_scroll')) {
+          window.scrollTo({ top: 0, behavior: 'instant' });
+        }
       }
     } else {
-      // Tình huống 3: Bấm sang các tab khác -> Luôn cuộn lên trên cùng
-      // NHƯNG CHỈ CUỘN KHI KHÔNG PHẢI LÀ ĐANG PHỤC HỒI TỪ F5
+      // Tình huống 3: Bấm sang các tab khác
+      // Chỉ cuộn lên 0 nếu KHÔNG PHẢI đang tải lại trang (F5)
       if (!sessionStorage.getItem('f5_scroll')) {
         window.scrollTo({ top: 0, behavior: 'instant' });
       }
     }
 
-    // 2. XỬ LÝ RENDER FACEBOOK COMMENT (Giữ nguyên)
+    // --- XỬ LÝ RENDER FACEBOOK COMMENT ---
     if (activeTab === 'community') {
       const renderFB = () => {
         const win = window as any;
@@ -43,54 +87,12 @@ function HomeContent() {
           console.log("Đang ép Facebook render...");
           win.FB.XFBML.parse(); 
         } else {
-          // Nếu SDK chưa tải xong, đợi thêm 500ms
           setTimeout(renderFB, 500);
         }
       };
-
-      // Đợi một chút để React vẽ xong cái thẻ <div className="fb-comments">
       setTimeout(renderFB, 300);
     }
-  }, [activeTab]); // Bắt sự thay đổi của tab
-  // --- BƯỚC 2: ĐỌC URL VÀ PHỤC HỒI TỌA ĐỘ F5 ---
-  useEffect(() => {
-    const currentHash = window.location.hash.replace('#', '');
-  
-    if (currentHash) {
-      setActiveTab(currentHash); // Mở đúng tab
-    
-      // Kiểm tra xem có tọa độ cũ do Bước 1 để lại không?
-      const savedScroll = sessionStorage.getItem('f5_scroll');
-    
-      if (savedScroll) {
-        // Nếu có, đợi 1 chút xíu (50ms) để giao diện vẽ xong các Tab, rồi cuộn cái rụp xuống đúng số đó
-        setTimeout(() => {
-          window.scrollTo({ top: parseInt(savedScroll), behavior: 'instant' });
-          sessionStorage.removeItem('f5_scroll'); // Dùng xong thì xóa đi cho sạch
-        }, 50);
-      } else {
-        // Nếu không có (ví dụ khách vừa gõ link vào trình duyệt), mới cuộn lên đầu
-        window.scrollTo({ top: 0, behavior: 'instant' });
-      }
-    }
-  }, []);
-// ----------------------------------------------
-  // --- BƯỚC 1: LƯU TỌA ĐỘ TRƯỚC KHI F5 ---
-  useEffect(() => {
-    const saveScrollPosition = () => {
-      // Nhanh tay lưu lại vị trí cuộn hiện tại vào biến 'f5_scroll'
-      sessionStorage.setItem('f5_scroll', window.scrollY.toString());
-    };
-
-    // Lắng nghe sự kiện người dùng nhấn F5 hoặc tải lại trang
-    window.addEventListener('beforeunload', saveScrollPosition);
-
-    // Dọn dẹp sự kiện khi component bị hủy (bắt buộc trong React)
-    return () => {
-    window.removeEventListener('beforeunload', saveScrollPosition);
-    };
-  }, []); 
-// ----------------------------------------
+  }, [activeTab]);
   const sendEmail = (e: any) => {
     e.preventDefault();
     setLoading(true);
