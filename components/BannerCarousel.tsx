@@ -13,6 +13,7 @@ const banners = [
   'https://cdn-media.sforum.vn/storage/app/media/thanhhuyen/mua%20s%E1%BA%AFm%20tr%E1%BB%B1c%20tuy%E1%BA%BFn/mua-sam-truc-tuyen-thumbnail.jpg',
   'https://groups.google.com/group/tran-bi-kinh-nghiem-mua-hang-online/attach/da5e54fa5e71/mua-hang-online-3.jpg?part=0.1&view=1',
   'https://nld.mediacdn.vn/thumb_w/698/291774122806476800/2024/11/19/mua-hang-online--1732011916389918839635.png',
+  '/baner-1.png',
 ];
 
 

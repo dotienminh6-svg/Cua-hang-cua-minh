@@ -145,10 +145,15 @@ function HomeContent() {
 
       {/* MENU ĐIỀU HƯỚNG */}
       <nav className="bg-[#337ab7] text-white sticky top-0 z-50 shadow-md">
-        <div className="max-w-7xl mx-auto flex overflow-x-auto scrollbar-hide px-6">
+        {/* Đưa tất cả (Tabs + Logo) vào chung 1 khung cuộn ngang duy nhất */}
+        <div className="max-w-7xl mx-auto flex items-center overflow-x-auto scrollbar-hide px-4">
+    
+          {/* ========================================== */}
+          {/* 1. KHU VỰC CÁC TAB                         */}
+          {/* ========================================== */}
           {[
-            { id: 'home', label: 'Trang chủ' },         // Trả lại tên Trang chủ
-            { id: 'about', label: 'Giới thiệu' },       // Thêm mới tab Giới thiệu
+            { id: 'home', label: 'Trang chủ' },
+            { id: 'about', label: 'Giới thiệu' },
             { id: 'news', label: 'Hot Trend' },
             { id: 'community', label: 'Cộng đồng' },
             { id: 'partnership', label: 'Hợp tác & Liên kết' }
@@ -159,16 +164,41 @@ function HomeContent() {
                 setActiveTab(tabItem.id);
                 window.location.hash = tabItem.id;
               }}
-              className={`px-8 py-4 font-bold uppercase text-xs tracking-widest transition-all whitespace-nowrap ${
-                activeTab === tabItem.id ? 'bg-[#23527c] border-b-4 border-yellow-400' : 'hover:bg-[#286090]'
+              className={`px-5 py-4 font-bold uppercase text-[10px] tracking-widest transition-all whitespace-nowrap flex-shrink-0 ${
+                activeTab === tabItem.id 
+                  ? 'bg-[#23527c] border-b-4 border-yellow-400' 
+                  : 'hover:bg-[#286090]'
               }`}
             >
               {tabItem.label}
             </button>
           ))}
+
+          {/* ========================================== */}
+          {/* 2. KHU VỰC LOGO (NẰM Ở CUỐI CÙNG)          */}
+          {/* ========================================== */}
+          <div 
+            // ml-auto: Tự động đẩy logo về sát lề phải trên màn hình máy tính
+            // pl-8: Tạo khoảng cách với Tab cuối cùng để không bị dính sát vào nhau
+            className="ml-auto pl-8 pr-2 flex-shrink-0 cursor-pointer hover:opacity-90 transition-opacity" 
+            onClick={() => {
+              setActiveTab('home');
+              window.location.hash = 'home';
+            }}
+            title="Về trang chủ"
+          >
+            <div className="bg-white p-1.5 rounded-lg shadow-sm flex items-center justify-center h-8 w-auto">
+              <img 
+                src="/logo-ngang.png" /* THAY TÊN FILE LOGO NGANG CỦA BẠN VÀO ĐÂY */
+                alt="AllInOneVN" 
+                className="h-full w-auto object-contain"
+              />
+            </div>
+          </div>
+
         </div>
       </nav>
-
+      
       {/* NỘI DUNG CHÍNH */}
       <div className="max-w-7xl mx-auto py-10 px-6 min-h-[500px]">
         
